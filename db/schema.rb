@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_031703) do
   end
 
   create_table "notes", force: :cascade do |t|
+    t.string "title"
     t.text "entry"
     t.string "ref_links"
     t.string "vid_url"
