@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Routes } from "react-router-dom";
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import ViewNotes from './features/notes/ViewNotes';
@@ -7,60 +8,24 @@ import CreateNotes from './features/notes/CreateNotes';
 import ViewBuddies from './features/buddies/ViewBuddies';
 import Subjectfilter from './features/notes/Subjectfilter';
 import UserDashboard from './features/User/UserDashboard';
+import Login from './features/login/Login';
+import NavBar from './features/nav/NavBar';
+import SignUp from './features/signup/SignUp';
 
 function App() {
   return (
     <div className="App">
-      <UserDashboard />
-      <ViewNotes />
-      <CreateNotes />
-      <ViewBuddies />
-      <Subjectfilter />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header> */}
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<UserDashboard />} />
+        <Route path="Notes" element={<ViewNotes />} />
+        <Route path="MakeNote" element={<CreateNotes />} />
+        <Route path="Buddies" element={<ViewBuddies />} />
+        <Route path="SubjectFilter" element={<Subjectfilter />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="Signup" element={<SignUp />} />
+      </Routes>
+      
     </div>
   );
 }
