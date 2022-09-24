@@ -1,12 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
+import ViewNotes from './features/notes/ViewNotes';
 import './App.css';
+import CreateNotes from './features/notes/CreateNotes';
+import ViewBuddies from './features/buddies/ViewBuddies';
+import Subjectfilter from './features/notes/Subjectfilter';
+import UserDashboard from './features/User/UserDashboard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <UserDashboard />
+      <ViewNotes />
+      <CreateNotes />
+      <ViewBuddies />
+      <Subjectfilter />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,7 +60,7 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
+      </header> */}
     </div>
   );
 }
