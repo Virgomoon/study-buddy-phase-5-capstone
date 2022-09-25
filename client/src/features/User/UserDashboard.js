@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from './userSlice'
 
 function UserDashboard() {
 
-    const [usersIndex, setUsersIndex] = useState([])
+    const users = useSelector(({users}) => users)
+    console.log(users)
+
+    console.log(getUsers)
+
     const [showUser, setShowUser] = useState([])
 
-    useEffect(() => {
-        fetch("http://localhost:3000/users")
-            .then((res) => res.json())
-            .then((data) => setUsersIndex(data))
-    }, []);
+    
 
     useEffect(() => {
         fetch("http://localhost:3000/users/1")
@@ -19,17 +21,17 @@ function UserDashboard() {
 
     // console.log(showUser)
 
-    const fetchedData = usersIndex.map((item) => {
-        return (
-            <div key={item.id}>
-                <h3>{item.first_name}</h3>
-                <h3>{item.last_name}</h3>
-                <h3>{item.username}</h3>
-                <h3>{item.id}</h3>
-                <h3>{item.email}</h3>
-            </div>
-        )
-    })
+    // const fetchedData = usersIndex.map((item) => {
+    //     return (
+    //         <div key={item.id}>
+    //             <h3>{item.first_name}</h3>
+    //             <h3>{item.last_name}</h3>
+    //             <h3>{item.username}</h3>
+    //             <h3>{item.id}</h3>
+    //             <h3>{item.email}</h3>
+    //         </div>
+    //     )
+    // })
 
     const displayUser = [
         
@@ -45,9 +47,9 @@ function UserDashboard() {
 return (
     <div>
         <div>UserDashboard</div>
-        {fetchedData}
-        {/* <h2>UserShow</h2>
-        {displayUser} */}
+        {/* {fetchedData} */}
+        <h2>UserShow</h2>
+        {displayUser}
     </div>
 )
 }
