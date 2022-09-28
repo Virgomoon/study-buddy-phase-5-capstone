@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    before_action :authorize, only: [:show]
 
     def index
         users = User.all 
@@ -17,8 +18,13 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
-        render json: user, status: :created
-    end
+        if user.valid?
+          session[:user_id] = user.id
+          render json: user, status: :created
+        else
+          render json: { error: user.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
 
     def update
         user = find_user

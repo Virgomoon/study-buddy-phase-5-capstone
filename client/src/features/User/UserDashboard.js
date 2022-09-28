@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from "react-router-dom";
 import { getUsers } from './userSlice'
 import { v4 as uuidv4 } from 'uuid';
 
 function UserDashboard() {
+
+    const navTo = useNavigate()
 
     const users = useSelector(({users}) => users)
     // console.log(users)
 
     // console.log(getUsers)
 
-    const [showUser, setShowUser] = useState([])
-
-    
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch("/users")
-            .then((res) => res.json())
-            .then((data) => setShowUser(data))
-    }, []);
+        // auto-login
+        fetch("/me").then((r) => {
+          if (r.ok) {
+            r.json().then((user) => setUser(user));
+          }
+        });
+      }, []);
 
-    // console.log(showUser)
+    console.log(user)
 
     // const fetchedData = usersIndex.map((item) => {
     //     return (
@@ -34,23 +38,23 @@ function UserDashboard() {
     //     )
     // })
 
-    const displayUser = [
+    // const displayUser = [
         
-                < div key = { uuidv4() } >
-                    <h3>{showUser.first_name}</h3>
-                    <h3>{showUser.last_name}</h3>
-                    <h3>{showUser.username}</h3>
-                    <h3>{showUser.id}</h3>
-                    <h3>{showUser.email}</h3>
-                </div >
-        ]
+    //             < div key = { uuidv4() } >
+    //                 <h3>{showUser.first_name}</h3>
+    //                 <h3>{showUser.last_name}</h3>
+    //                 <h3>{showUser.username}</h3>
+    //                 <h3>{showUser.id}</h3>
+    //                 <h3>{showUser.email}</h3>
+    //             </div >
+    //     ]
 
 return (
     <div>
-        <h1>Welcome, User!</h1>
+        <h1>Dashboard</h1>
         {/* {fetchedData} */}
         <h2>UserShow</h2>
-        {displayUser}
+        
         
     </div>
 )
