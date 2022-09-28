@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import ViewNotes from './features/notes/ViewNotes';
@@ -15,7 +16,7 @@ import SignUp from './features/signup/SignUp';
 function App() {
 
     const [user, setUser] = useState(null);
-  
+    
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
@@ -23,10 +24,10 @@ function App() {
         }
       });
     }, []);
+
+    const welcomeUser = user ? <h2>Welcome, {user.username}!</h2> : <Login onLogin={setUser}  />
   
     console.log(user)
-
-    const welcomeUser = user ? <h2>Welcome, {user.username}!</h2> : <Login onLogin={setUser} />
 
     function handleLogout() {
       setUser(null);
@@ -41,8 +42,8 @@ function App() {
     
     return (
       <div className="App">
-        {welcomeUser}
       <NavBar onLogout={handleLogout}/>
+        {welcomeUser}
       <Routes>
         <Route exact path="/" element={<UserDashboard />} />
         <Route path="Notes" element={<ViewNotes />} />

@@ -6,25 +6,23 @@ import { v4 as uuidv4 } from 'uuid';
 
 function UserDashboard() {
 
-    const navTo = useNavigate()
-
     const users = useSelector(({users}) => users)
     // console.log(users)
 
     // console.log(getUsers)
 
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        // auto-login
-        fetch("/me").then((r) => {
-          if (r.ok) {
-            r.json().then((user) => setUser(user));
-          }
-        });
-      }, []);
+    // useEffect(() => {
+    //     // auto-login
+    //     fetch("/me").then((r) => {
+    //       if (r.ok) {
+    //         r.json().then((user) => setUser(user));
+    //       }
+    //     });
+    //   }, []);
 
-    console.log(user)
+    // console.log(user)
 
     // const fetchedData = usersIndex.map((item) => {
     //     return (
@@ -51,9 +49,9 @@ function UserDashboard() {
 
 return (
     <div>
-        <h1>Dashboard</h1>
-        {/* {fetchedData} */}
-        <h2>UserShow</h2>
+        <h1>Study Buddy</h1>
+       
+        <h2>What will you learn today?</h2>
         
         
     </div>
