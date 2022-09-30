@@ -1,10 +1,13 @@
 import React, {useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+
 import { UserContext } from '../context/userDetails';
+import FetchUserDetails from '../routes/FetchUserDetails';
+import NavBar from '../routes/NavBar';
 
 function Header() {
 
     const { setUsername } = useContext(UserContext)
+
 
     function handleLogout() {
         fetch("/logout", {
@@ -14,9 +17,11 @@ function Header() {
     
       return (
         <>
-        {/* <div className="nav">
-                    <NavLink to="/" exact="true" className={({ isActive }) => (isActive ? "link-active" : "link")}>
-                    UserDashboard
+        <nav className="nav">
+                    <h3> 
+                      Study Buddy
+                    </h3>
+                    {/* UserDashboard
                     </NavLink>
                     <NavLink to="/view_notes" className={({ isActive }) => (isActive ? "link-active" : "link")}>
                         View Notes
@@ -26,9 +31,12 @@ function Header() {
                     </NavLink>
                     <NavLink to="/buddies" className={({ isActive }) => (isActive ? "link-active" : "link")}>
                         Buddies
-                    </NavLink>
-        </div> */}
+                    </NavLink> */}
+        </nav>
               <button onClick={handleLogout}>Logout</button>
+
+        <FetchUserDetails />
+        {/* <NavBar /> */}
         </>
       )
 }

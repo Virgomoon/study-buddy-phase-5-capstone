@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     def index
         session[:user_id] 
-        cookies[:cookies_hello] ||= "World"
+        cookies[:user_id] 
         render json: { session: session, cookies: cookies.to_hash }
     end
 

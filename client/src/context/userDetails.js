@@ -4,13 +4,13 @@ const UserContext = createContext();
 
 const UserProvider = (props) => {
     const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("");
+    const [id, setId] = useState("");
 
     const value = useMemo(
         () => ({ 
             username, setUsername,
-            password, setPassword 
-        }), [username ,password]
+            id, setId 
+        }), [username ,id]
         )
 
     return (

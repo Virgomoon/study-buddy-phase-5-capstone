@@ -9,6 +9,7 @@ import MakeNote from "./routes/MakeNote";
 import SignUp from "./routes/SignUp";
 import ViewNotes from "./routes/ViewNotes";
 import './App.css';
+import NavBar from "./routes/NavBar";
 
 const router = createBrowserRouter([
   {
@@ -20,13 +21,14 @@ const router = createBrowserRouter([
   {path: "/view_notes", element: <ViewNotes />},
   {path: "/add_note", element: <MakeNote /> },
   {path: "/signup", element: <SignUp />},
-  {path: "/buddies", element: <Buddies />}
+  {path: "/buddies", element: <Buddies />},
+  {path: "/nav", element: <NavBar />},
+  {path: "header", element: <Header />}
 ]);
 
 function App() {
   return (
     <UserProvider>
-        <Header />
         <RouterProvider router={router} />
     </UserProvider>
   );

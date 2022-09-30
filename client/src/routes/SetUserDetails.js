@@ -1,15 +1,13 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../context/userDetails'
 import { useNavigate } from "react-router-dom";
 
 export default function SetUserDetails() {
     const [name, setName] = useState("")
-    const [pw, setPw] = useState("")
+    const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
-
-
-    const { setUsername, setPassword } = useContext(UserContext)
+    const { username, id, setUsername, setId } = useContext(UserContext)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -18,20 +16,29 @@ export default function SetUserDetails() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, pw }),
+          body: JSON.stringify({ name }),
         })
           .then((r) => r.json())
           .then((user) => setUsername(user));
-        //   .then((user) => onLogin(user));
-          
+        //   .then((user) => onLogin(user));  
       }
 
-    const handleSetName = () => {
+      useEffect(() => {
+        fetch("/me").then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setId(user.id));
+          }
+        });
+      }, [username]);
+      
+      
+      
+      const handleSetName = () => {
         setUsername(name)
-        setPassword(pw)
-        navigate("/user")
-    }
-
+        setId(id)
+        navigate("/")
+      }
+      
     return (<>
         <form onSubmit={handleSubmit}>
       <label>
@@ -50,8 +57,8 @@ export default function SetUserDetails() {
             type="password"
             name="password"
             required
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
       <button onClick={handleSetName}>Login</button>
