@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../context/userDetails';
 import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
@@ -8,11 +8,13 @@ import Header from '../components/Header';
 function HomePage() {
 
     // const navTo = useNavigate()
-    const { username, id } = useContext(UserContext)
-    if (!username) return <Navigate to="/login" />;
+    const { username, setUsername, id } = useContext(UserContext)
+    if (!username) return <Navigate to="/userlogin" />;
 
-    console.log(username)
-    console.log(id)
+    
+
+    // console.log(username)
+    // console.log(id)
 
   return (
     <>

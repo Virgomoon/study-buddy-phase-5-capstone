@@ -4,5 +4,7 @@ class User < ApplicationRecord
     has_many :subjects, through: :notes
     has_many :buddies
     has_many :users, :source => :buddy, :through => :buddies
+
+    validates :username, presence: true, uniqueness: true
     
 end

@@ -6,6 +6,6 @@ export default function FetchUserDetails() {
 
     const { username } = useContext(UserContext)
     return <>
-        {username ? `Welcome ${username}` : <Navigate to="/login" />}
+        {username ? `Welcome ${username}` : <Navigate to="/userlogin" />}
     </>
 }

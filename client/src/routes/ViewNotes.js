@@ -7,10 +7,11 @@ import Header from '../components/Header';
 
 function ViewNotes() {
 
-  const { username, id } = useContext(UserContext)
+  const { username } = useContext(UserContext)
 
-  console.log(username)
-    console.log(id)
+  fetch('/user_notes')
+    .then((r)=>{r.json()})
+    .then((data)=>{console.log(data)})
 
   return (
     <>

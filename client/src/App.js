@@ -10,6 +10,8 @@ import SignUp from "./routes/SignUp";
 import ViewNotes from "./routes/ViewNotes";
 import './App.css';
 import NavBar from "./routes/NavBar";
+// import { useContext, useEffect } from 'react'
+// import { UserContext } from './context/userDetails'
 
 const router = createBrowserRouter([
   {
@@ -17,16 +19,21 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   { path: "/user", element: <FetchUserDetails /> },
-  {path: "/login", element: <SetUserDetails />},
-  {path: "/view_notes", element: <ViewNotes />},
-  {path: "/add_note", element: <MakeNote /> },
-  {path: "/signup", element: <SignUp />},
-  {path: "/buddies", element: <Buddies />},
-  {path: "/nav", element: <NavBar />},
-  {path: "header", element: <Header />}
+  { path: "/userlogin", element: <SetUserDetails />},
+  { path: "/view_notes", element: <ViewNotes />},
+  { path: "/add_note", element: <MakeNote /> },
+  { path: "/usersignup", element: <SignUp />},
+  { path: "/mybuddies", element: <Buddies />},
+  { path: "/nav", element: <NavBar />},
+  { path: "header", element: <Header />}
 ]);
 
 function App() {
+
+  // const { setUsername } = useContext(UserContext)
+
+  
+
   return (
     <UserProvider>
         <RouterProvider router={router} />

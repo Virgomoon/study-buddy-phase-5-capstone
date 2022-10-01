@@ -5,31 +5,89 @@ import { useNavigate } from "react-router-dom";
 export default function SetUserDetails() {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
+    // const [formData, setFormData] = useState({ 
+    //   username: "", 
+    //   password: "", 
+    // });
+    const [userData, setUserData] = useState([])
     const navigate = useNavigate()
 
     const { username, id, setUsername, setId } = useContext(UserContext)
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        fetch("/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name }),
-        })
-          .then((r) => r.json())
-          .then((user) => setUsername(user));
-        //   .then((user) => onLogin(user));  
-      }
+    useEffect(() => {
+      // auto-login
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUsername(user));
+        }
+      });
+    }, []);
 
-      useEffect(() => {
-        fetch("/me").then((response) => {
-          if (response.ok) {
-            response.json().then((user) => setId(user.id));
+    async function handleSubmit(e) {
+      e.preventDefault();
+  
+      await fetch("/login")
+        .then((res) => res.json())
+        .then((data) => {
+          const userSignIn = data.find((user) => user.username === name)
+          console.log(userSignIn)
+          if(!userSignIn){
+            setName("")
+            setPassword("")
+          return
+        }
+          if (userSignIn.password  === password) {
+            setUserData(userSignIn)
+            setUsername(userSignIn.username)
+            setId(userSignIn.id)
+            // setCurrentUser(userSignIn.username)
+  
+            navigate("/")
+  
           }
-        });
-      }, [username]);
+          setName("")
+          setPassword("")
+        })
+    }
+
+    // function handleSubmit(e) {
+      // e.preventDefault();
+    //   useEffect(() => {
+    //     fetch("/login", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ username, password }),
+    //     })
+    //       .then((r) => r.json())
+    //       .then((user) => {
+    //         setUsername(user)
+    //       });
+    //       console.log(username)
+    //     //   .then((user) => onLogin(user));  
+    // }, [])
+
+      
+      // fetch('/users')
+      //   .then((r)=> r.json())
+      //   .then((data)=> console.log(data))
+      
+      // useEffect(() => {
+      //   fetch("/me").then((response) => {
+      //     if (response.ok) {
+      //       response.json().then((user) => console.log(user));
+      //     }
+      //   });
+      // }, [username]);
+
+      // useEffect(() => {
+      //   fetch("/me").then((response) => {
+      //     if (response.ok) {
+      //       response.json().then((user) => setId(user.id));
+      //     }
+      //   });
+      // }, [username]);
       
       
       
@@ -63,6 +121,7 @@ export default function SetUserDetails() {
         </label>
       <button onClick={handleSetName}>Login</button>
     </form>
+    <h3 onClick={() => navigate('/usersignup')}>Create Account</h3>
     </>)
 
 }

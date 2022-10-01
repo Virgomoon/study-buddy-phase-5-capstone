@@ -2,13 +2,16 @@ Rails.application.routes.draw do
   resources :buddies
   resources :notes
   resources :subjects, only: [:index]
-  resources :users, only: [:index, :create, :update, :destroy]
+  resources :users, only: [:index, :update, :destroy]
+  resources :user_notes
 
-  get "/sessions", to: "sessions#index"
+  # get "/sessions", to: "sessions#index"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+
+  # get "/mynotes", to "user_notes#show"
 
 
 
