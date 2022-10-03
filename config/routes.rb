@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :buddies
   resources :notes
   resources :subjects, only: [:index]
-  resources :users, only: [:index, :update, :destroy]
+  # resources :users, only: [:index, :update, :destroy]
   resources :user_notes
 
   # get "/sessions", to: "sessions#index"

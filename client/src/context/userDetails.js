@@ -3,14 +3,14 @@ import { useState, createContext, useMemo } from 'react'
 const UserContext = createContext();
 
 const UserProvider = (props) => {
-    const [username, setUsername] = useState("")
+    const [currentUser, setCurrentUser] = useState("")
     const [id, setId] = useState("");
 
     const value = useMemo(
         () => ({ 
-            username, setUsername,
+            currentUser, setCurrentUser,
             id, setId 
-        }), [username ,id]
+        }), [currentUser ,id]
         )
 
     return (

@@ -3,22 +3,23 @@ import { UserContext } from '../context/userDetails'
 import { useNavigate } from "react-router-dom";
 
 export default function SetUserDetails() {
-    const [name, setName] = useState("")
+    const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [userData, setUserData] = useState([])
     // const [formData, setFormData] = useState({ 
     //   username: "", 
     //   password: "", 
     // });
-    const [userData, setUserData] = useState([])
+    // const [userData, setUserData] = useState([])
     const navigate = useNavigate()
 
-    const { username, id, setUsername, setId } = useContext(UserContext)
+    const { setCurrentUser, setId  } = useContext(UserContext)
 
     useEffect(() => {
       // auto-login
       fetch("/me").then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUsername(user));
+          r.json().then((user) => setCurrentUser(user));
         }
       });
     }, []);
@@ -26,30 +27,32 @@ export default function SetUserDetails() {
     async function handleSubmit(e) {
       e.preventDefault();
   
-      await fetch("/login")
-        .then((res) => res.json())
-        .then((data) => {
-          const userSignIn = data.find((user) => user.username === name)
-          console.log(userSignIn)
-          if(!userSignIn){
-            setName("")
-            setPassword("")
-          return
-        }
-          if (userSignIn.password  === password) {
-            setUserData(userSignIn)
-            setUsername(userSignIn.username)
-            setId(userSignIn.id)
-            // setCurrentUser(userSignIn.username)
-  
-            navigate("/")
-  
-          }
-          setName("")
-          setPassword("")
-        })
+      await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      }).then((r) => {
+        // setIsLoading(false);
+        if (r.ok) {
+          r.json().then((user) => setUserData(user));
+        // } else {
+        //   r.json().then((err) => setErrors(err.errors));
+        setCurrentUser(userData.username)
+        setId(userData.id)
+        setUserName("")
+        setPassword("")
+        navigate("/")
+      }
+      })
     }
-
+    
+    // const handleSetName = () => {
+    //   setUsername(name)
+    //   setId(id)
+    //   navigate("/")
+    // }
     // function handleSubmit(e) {
       // e.preventDefault();
     //   useEffect(() => {
@@ -91,11 +94,6 @@ export default function SetUserDetails() {
       
       
       
-      const handleSetName = () => {
-        setUsername(name)
-        setId(id)
-        navigate("/")
-      }
       
     return (<>
         <form onSubmit={handleSubmit}>
@@ -105,8 +103,8 @@ export default function SetUserDetails() {
             type="text"
             name="username"
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
       />
       </label>
       <label>
@@ -119,7 +117,7 @@ export default function SetUserDetails() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-      <button onClick={handleSetName}>Login</button>
+      <button onClick={handleSubmit}>Login</button>
     </form>
     <h3 onClick={() => navigate('/usersignup')}>Create Account</h3>
     </>)
