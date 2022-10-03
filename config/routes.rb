@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :buddies
   resources :notes
   resources :subjects, only: [:index]
-  # resources :users, only: [:index, :update, :destroy]
+  resources :users, only: [:index, :update, :destroy]
   resources :user_notes
 
   # get "/sessions", to: "sessions#index"
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
 
-  # get "/mynotes", to "user_notes#show"
+  get "/mynotes", to: "usernotes#show"
 
 
 
