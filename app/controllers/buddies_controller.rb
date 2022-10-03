@@ -1,7 +1,7 @@
 class BuddiesController < ApplicationController
 
     def index
-        buddies = Buddy.all
+        buddies = @current_user.buddies
         render json: buddies
     end
 end

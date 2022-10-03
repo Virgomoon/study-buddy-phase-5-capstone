@@ -2,7 +2,7 @@ class NotesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
-        notes = Note.all
+        notes = @current_user.notes
         render json: notes
     end
 
@@ -12,7 +12,7 @@ class NotesController < ApplicationController
     end
 
     def create
-        note = Note.create(note_params)
+        note = @current_user.notes.create(note_params)
         render json: note, status: :created
     end
 
@@ -34,12 +34,12 @@ class NotesController < ApplicationController
         params.permit(:subject_id, :user_id, :title, :entry, :ref_links, :vid_url)
     end
 
-    def find_user
-        User.find_by(id: params[:id])
-    end
+    # def find_user
+    #     User.find_by(id: params[:id])
+    # end
 
     def find_note
-        User.find(params[:id])
+        @current_user.notes.find(params[:id])
     end
 
     def render_not_found_response

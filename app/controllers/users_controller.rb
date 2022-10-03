@@ -18,14 +18,12 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = find_user
-        user.update(user_params)
+        @current_user.update(user_params)
         render json: user
     end
 
     def destroy
-        user = find_user
-        user.destroy
+        @current_user.destroy
         head :no_content
     end
 
@@ -35,9 +33,9 @@ class UsersController < ApplicationController
         params.permit(:first_name, :last_name, :email, :username, :password)
     end
 
-    def find_user
-        User.find(params[:id])
-    end
+    # def find_user
+    #     User.find(params[:id])
+    # end
 
     # def render_not_found_response
     #     render json: { error: "User not found" }, status: :not_found
