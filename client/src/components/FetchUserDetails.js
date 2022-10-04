@@ -4,8 +4,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 export default function FetchUserDetails() {
 
-    const { username } = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
     return <>
-        {username ? `Welcome ${username}` : <Navigate to="/userlogin" />}
+        {currentUser ? `Welcome ${currentUser.username}` : null}
     </>
 }

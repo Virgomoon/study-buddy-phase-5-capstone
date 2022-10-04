@@ -1,18 +1,18 @@
 import React, {useContext } from 'react';
 
 import { UserContext } from '../context/userDetails';
-import FetchUserDetails from '../routes/FetchUserDetails';
+import FetchUserDetails from './FetchUserDetails';
 import NavBar from '../routes/NavBar';
 
 function Header() {
 
-    const { setUsername } = useContext(UserContext)
+    const { currentUser, setCurrentUser } = useContext(UserContext)
 
 
     function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
-        }).then(() => setUsername(null));
+        }).then(() => setCurrentUser(null));
       }
     
       return (
@@ -35,7 +35,7 @@ function Header() {
         </nav>
               <button onClick={handleLogout}>Logout</button>
 
-        <FetchUserDetails />
+        {/* <FetchUserDetails /> */}
         {/* <NavBar /> */}
         </>
       )

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../context/userDetails'
 import { Navigate, useNavigate } from "react-router-dom";
+import { redirect } from 'react-router-dom';
 
 export default function SetUserDetails() {
     const [username, setUserName] = useState("")
@@ -10,11 +11,11 @@ export default function SetUserDetails() {
     const { setCurrentUser, currentUser  } = useContext(UserContext)
     
     const navigate = useNavigate()
-    console.log(currentUser)
-
+    
     
     async function handleSubmit(e) {
       e.preventDefault();
+      // debugger
       
       await fetch("/login", {
         method: "POST",
@@ -26,9 +27,10 @@ export default function SetUserDetails() {
         if (r.ok) {
           r.json().then((user) => setCurrentUser(user));
         }
-        navigate("/")
       })
+      navigate('/')
     }
+    console.log(currentUser)
 
     // useEffect(() => {
     //   if (currentUser) {

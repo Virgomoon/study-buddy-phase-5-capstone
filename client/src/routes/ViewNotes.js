@@ -1,17 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/userDetails';
 import NavBar from './NavBar';
-import FetchUserDetails from './FetchUserDetails';
+import FetchUserDetails from '../components/FetchUserDetails';
 import {Navigate} from 'react-router-dom'
 import Header from '../components/Header';
 
 function ViewNotes() {
 
-  const { username } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
 
-  fetch('/user_notes')
-    .then((r)=>{r.json()})
-    .then((data)=>{console.log(data)})
+  async function getNotes(){
+    
+    const r = await fetch('/notes');
+    const data = r.json();
+    return data;
+  }
+
+  getNotes().then(function(result) {
+    console.log(result);
+});
+  // useEffect(() => {
+      
+  //   }, []);
 
   return (
     <>

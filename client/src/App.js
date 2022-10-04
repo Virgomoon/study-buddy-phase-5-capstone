@@ -3,7 +3,7 @@ import { UserProvider } from "./context/userDetails";
 import Header from "./components/Header";
 import Buddies from "./routes/Buddies";
 import SetUserDetails from "./routes/SetUserDetails";
-import FetchUserDetails from "./routes/FetchUserDetails";
+import FetchUserDetails from "./components/FetchUserDetails";
 import HomePage from "./routes/HomePage";
 import MakeNote from "./routes/MakeNote";
 import SignUp from "./routes/SignUp";
@@ -15,8 +15,7 @@ import NavBar from "./routes/NavBar";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />,
+    path: "/", element: <HomePage />,
   },
   { path: "/user", element: <FetchUserDetails /> },
   { path: "/userlogin", element: <SetUserDetails />},
@@ -25,7 +24,7 @@ const router = createBrowserRouter([
   { path: "/usersignup", element: <SignUp />},
   { path: "/mybuddies", element: <Buddies />},
   { path: "/nav", element: <NavBar />},
-  { path: "header", element: <Header />}
+  { path: "/header", element: <Header />}
 ]);
 
 function App() {
