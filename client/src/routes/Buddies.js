@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/userDetails'
 import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
@@ -8,6 +8,7 @@ import Header from '../components/Header';
 function Buddies() {
 
   const { currentUser } = useContext(UserContext)
+  const [myBuddies, setMyBuddies] = useState([])
 
   async function getBuddies(){
     
@@ -16,10 +17,15 @@ function Buddies() {
     return data;
   }
 
-  getBuddies().then(function(result) {
-    console.log(result);
-});
-  // console.log(username)
+  
+  useEffect(() => {
+    
+    getBuddies().then(function(result) {
+      setMyBuddies(result);
+  });
+
+}, []);
+  console.log(myBuddies)
   //   console.log(id)
   return (
     <>
