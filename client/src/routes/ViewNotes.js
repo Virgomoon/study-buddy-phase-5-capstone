@@ -60,23 +60,18 @@ function ViewNotes() {
 
 const filteredNotes = userNotes.filter((note) => note.subject.title  ===  selectedSubject);
 
-// const displayNotes = (
-//   <ul className="items">
-//         {filteredNotes.map((note) => {
-//         return <li key={note.id} name={note.title} >
-//           <h3>Title</h3>
-//           <h3>{note.title}</h3>
-//           <h3>Subject</h3>
-//           <h3>{note.subject}</h3>
-//           <h3>Entry</h3>
-//           <h3>{note.entry}</h3>
-//           <h3>{note.vid_url}</h3>
-//           <h3>{note.ref_links}</h3>
+// onClick={renderSeries}
 
-//         </li>
-//         })}
-//       </ul>
-// )
+const displayNotes = filteredNotes.map((note)=> {
+  return(
+      <div key={note.id} id={note.id}  >
+          <h2>{note.title}</h2>
+          <p>{note.entry}</p>
+          <span>Buddies: {note.users.length} </span>
+
+      </div>
+  )
+  })
 
 console.log(selectedSubject)
 
@@ -87,7 +82,7 @@ console.log(selectedSubject)
     <NavBar />
     <FetchUserDetails />
     {subjectFilter}
-    {/* {displayNotes} */}
+    {displayNotes}
     </>
   )
 }

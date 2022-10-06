@@ -1,6 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/userDetails'
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function SignUp() {
 
@@ -61,7 +64,72 @@ function SignUp() {
   return (
     <div className="sign-up">
     <h1 className="heading"> Create Account</h1>
-      <form className="form" onSubmit={handleAddUser}>
+    <Box
+     component="form"
+     sx={{
+       '& .MuiTextField-root': { m: 1, width: '25ch' },
+     }}>
+      <div>
+
+        <TextField
+          required
+          id="outlined-required"
+          label="First Name"
+          defaultValue={formData.first_name}
+          onChange={handleChange}
+          />
+
+        <TextField
+          required
+          id="outlined-required"
+          label="Last Name"
+          defaultValue={formData.last_name}
+          onChange={handleChange}
+          />
+
+        <TextField
+          required
+          id="outlined-required"
+          label="Username"
+          defaultValue={formData.username}
+          onChange={handleChange}
+          />
+        </div>
+
+        <div>
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
+          defaultValue={formData.email}
+          onChange={handleChange}
+          />
+
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          required
+          defaultValue={formData.password}
+          onChange={handleChange}
+          />
+
+        <TextField
+          id="outlined-password-input"
+          label="Password Confirmation"
+          type="password"
+          required
+          defaultValue={formData.password_confirmation}
+          onChange={handleChange}
+          />
+        </div>
+
+        <Button variant='contained'>Submit</Button>
+
+    </Box>
+
+    <Button variant='outlined' onClick={()=> navigate("/userlogin")}>Go Back</Button>
+      {/* <form className="form" onSubmit={handleAddUser}>
       <label>
             First Name
           <input
@@ -122,9 +190,9 @@ function SignUp() {
           onChange={handleChange}
           />
           </label>
-      <button>Submit</button>
+      <Button variant='contained'>Submit</Button>
       </form>
-      <button onClick={()=> navigate("/userlogin")}>Go Back</button>
+      <Button variant='outlined' onClick={()=> navigate("/userlogin")}>Go Back</Button> */}
   </div>
   )
 }
