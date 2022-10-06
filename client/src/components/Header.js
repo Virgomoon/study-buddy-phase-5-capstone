@@ -1,4 +1,5 @@
 import React, {useContext } from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { UserContext } from '../context/userDetails';
 import FetchUserDetails from './FetchUserDetails';
@@ -7,12 +8,14 @@ import NavBar from '../routes/NavBar';
 function Header() {
 
     const { currentUser, setCurrentUser } = useContext(UserContext)
+    const navigate = useNavigate()
 
 
     function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
         }).then(() => setCurrentUser(null));
+        navigate('/userlogin')
       }
     
       return (
