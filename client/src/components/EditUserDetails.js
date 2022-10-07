@@ -3,13 +3,18 @@ import { UserContext } from '../context/userDetails';
 
 function EditUserDetails({setIsEditing}) {
 
-    // const { currentUser, setCurrentUser} = useContext(UserContext)
-    // const { id } = currentUser
+    const { currentUser, setCurrentUser} = useContext(UserContext)
+    const { id } = currentUser
 
-    // const [editedState, setEditedState] = useState(...currentUser);
+     const [editedState, setEditedState] = useState({
+        username: currentUser.username,
+        first_name: currentUser.first_name,
+        last_name: currentUser.last_name,
+        email: currentUser.email
+    });
     // const { username, first_name, last_name, email} = editedState
 
-    // console.log(editedState)
+    console.log(editedState)
 
     // function handleFormSubmit(e) {
     //     e.preventDefault();
@@ -31,33 +36,37 @@ function EditUserDetails({setIsEditing}) {
 
   return (
     <form className="edit-message" >
+        <label>Username</label>
         <input
           type="text"
           name="username"
           autoComplete="off"
-        //   value={username}
-        //   onChange={(e) => setEditedState(e.target.value)}
+          value={editedState.username}
+          onChange={(e) => setEditedState(e.target.value)}
         />
+        <label>First Name</label>
         <input
           type="text"
           name="first_name"
           autoComplete="off"
-        //   value={first_name}
-        //   onChange={(e) => setEditedState(e.target.value)}
+          value={editedState.first_name}
+          onChange={(e) => setEditedState(e.target.value)}
         />
+        <label>Last Name</label>
         <input
           type="text"
           name="last_name"
           autoComplete="off"
-        //   value={last_name}
-        //   onChange={(e) => setEditedState(e.target.value)}
+          value={editedState.last_name}
+          onChange={(e) => setEditedState(e.target.value)}
         />
+        <label>Email</label>
         <input
           type="text"
           name="username"
           autoComplete="off"
-        //   value={email}
-        //   onChange={(e) => setEditedState(e.target.value)}
+          value={editedState.email}
+          onChange={(e) => setEditedState(e.target.value)}
         />
       
         <input type="submit" value="Save" />
