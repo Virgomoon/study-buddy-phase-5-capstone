@@ -7,7 +7,7 @@ import Header from '../components/Header';
 
 function HomePage() {
 
-    // const navTo = useNavigate()
+    const navigate = useNavigate()
     const { currentUser, setCurrentUser} = useContext(UserContext)
     
     useEffect(() => {
@@ -20,7 +20,7 @@ function HomePage() {
     }, []);
 
     // if (currentUser === null) {
-    //   return <Navigate to="/userlogin" />;
+    //   return navigate("/userlogin");
     // } 
 
     console.log(currentUser)
@@ -29,9 +29,9 @@ function HomePage() {
   return (
     <>
     <Header />
-    <div>HomePage</div>
-    <NavBar />
     <FetchUserDetails />
+    <NavBar />
+    <div>Home Page</div>
     </>
   )
 }

@@ -2,6 +2,8 @@ import React, {useContext } from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { UserContext } from '../context/userDetails';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import FetchUserDetails from './FetchUserDetails';
 import NavBar from '../routes/NavBar';
 
@@ -19,7 +21,7 @@ function Header() {
       }
     
       return (
-        <>
+        <Box>
         <nav className="nav">
                     <h3> 
                       Study Buddy
@@ -36,11 +38,11 @@ function Header() {
                         Buddies
                     </NavLink> */}
         </nav>
-              <button onClick={handleLogout}>Logout</button>
+              <Button variant='contained' onClick={handleLogout}>Logout</Button>
 
         {/* <FetchUserDetails /> */}
         {/* <NavBar /> */}
-        </>
+        </Box>
       )
 }
 

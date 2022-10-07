@@ -38,7 +38,7 @@ export default function SetUserDetails() {
     // useEffect(() => {
     //   if (currentUser) {
 
-    //   //  return navigate("/");
+    //    return navigate("/");
     //   }
     // }, []);
     
