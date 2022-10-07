@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
+import BasicCard from '../components/BasicCard';
 
 function HomePage() {
 
@@ -31,7 +32,8 @@ function HomePage() {
     <Header />
     <FetchUserDetails />
     <NavBar />
-    <div>Home Page</div>
+    <h3>Profile Details</h3>
+    <BasicCard />
     </>
   )
 }
