@@ -7,35 +7,40 @@ function EditUserDetails({setIsEditing}) {
     const { id } = currentUser
 
      const [editedState, setEditedState] = useState({
-        username: currentUser.username,
-        first_name: currentUser.first_name,
-        last_name: currentUser.last_name,
-        email: currentUser.email
+        username: "",
+        first_name: "",
+        last_name: "",
+        email: "",
     });
     // const { username, first_name, last_name, email} = editedState
 
     console.log(editedState)
+    console.log(currentUser)
 
-    // function handleFormSubmit(e) {
-    //     e.preventDefault();
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        let updatedUser = ({
+            ...currentUser, [editedState]: editedState
+        })
     
-    //     fetch(`/users/${id}`, {
-    //       method: "PATCH",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         entry: editedState,
-    //       }),
-    //     })
-    //       .then((r) => r.json())
-    //       .then((updatedUser) => setCurrentUser(updatedUser));
+        fetch(`/users/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            updatedUser
+          })
+        })
+          .then((r) => r.json())
+          .then((updatedUser) => setCurrentUser(updatedUser));
   
-    //       setIsEditing(false)
-    //   }
+          setIsEditing(false)
+      }
 
   return (
-    <form className="edit-message" >
+    <form className="edit-message" onSubmit={handleFormSubmit}>
         <label>Username</label>
         <input
           type="text"

@@ -10,7 +10,7 @@ function ViewNotes() {
   const { currentUser } = useContext(UserContext)
 
   const [ subjectList, setSubjectList ] = useState([])
-  const [ selectedSubject, setSelectedSubject ] = useState("")
+  const [ selectedSubject, setSelectedSubject ] = useState("Literature")
   const [ userNotes, setUserNotes] = useState([])
 
   async function getSubjects(){

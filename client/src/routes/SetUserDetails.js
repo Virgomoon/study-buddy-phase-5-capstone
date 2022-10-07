@@ -11,7 +11,7 @@ export default function SetUserDetails() {
     const [password, setPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
     
-    const { setCurrentUser, currentUser  } = useContext(UserContext)
+    const { setCurrentUser, currentUser, currentUserRef  } = useContext(UserContext)
     
     const navigate = useNavigate()
     
@@ -33,7 +33,7 @@ export default function SetUserDetails() {
       })
       navigate('/')
     }
-    console.log(currentUser)
+    console.log(currentUserRef.current)
 
     // useEffect(() => {
     //   if (currentUser) {
@@ -77,30 +77,6 @@ export default function SetUserDetails() {
 
     <Button onClick={() => navigate('/usersignup')}>Create Account</Button>
 
-        {/* <form onSubmit={handleSubmit}>
-      <label>
-          Username
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
-      />
-      </label>
-      <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-      <button onClick={handleSubmit}>Login</button>
-    </form>
-    <h3 onClick={() => navigate('/usersignup')}>Create Account</h3> */}
     </>)
 
 }

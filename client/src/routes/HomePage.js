@@ -9,7 +9,7 @@ import BasicCard from '../components/BasicCard';
 function HomePage() {
 
     const navigate = useNavigate()
-    const { currentUser, setCurrentUser} = useContext(UserContext)
+    const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
     
     useEffect(() => {
       // auto-login
@@ -20,11 +20,13 @@ function HomePage() {
       });
     }, []);
 
+      const showCard = currentUser ? <BasicCard /> : null
+
     // if (currentUser === null) {
     //   return navigate("/userlogin");
     // } 
 
-    console.log(currentUser)
+    console.log(currentUserRef.current)
     // console.log(id)
 
   return (
@@ -33,7 +35,7 @@ function HomePage() {
     <FetchUserDetails />
     <NavBar />
     <h3>Profile Details</h3>
-    <BasicCard />
+    {showCard}
     </>
   )
 }

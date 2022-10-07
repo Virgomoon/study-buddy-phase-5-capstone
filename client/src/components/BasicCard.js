@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../context/userDetails'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import EditUserDetails from './EditUserDetails';
+import { useNavigate } from "react-router-dom";
 
 // const bull = (
 //   <Box
@@ -20,11 +21,29 @@ import EditUserDetails from './EditUserDetails';
 
 export default function BasicCard() {
 
+    
     const [isEditing, setIsEditing] = useState(false);
+    
+    const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
+    
+    console.log(currentUserRef.current)
+    useEffect(() => {
+        if (!currentUser) return "";
+      }, [])
 
-    const { currentUser, setCurrentUser} = useContext(UserContext)
+    const navigate = useNavigate();
 
-    const { username, first_name, last_name, email, id } = currentUser
+    function deleteUser() {
+        
+        fetch(`/users/${currentUser.id}`, {
+        method: "DELETE",
+      })
+
+        setCurrentUser(null)
+        navigate("/userlogin")
+    }
+
+    console.log(currentUserRef.current)
     
 
   return (
@@ -35,16 +54,16 @@ export default function BasicCard() {
         />) : (
             <div>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Username: {username}
+                Username: {currentUserRef.current.username}
                 </Typography>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                First Name: {first_name}
+                First Name: {currentUserRef.current.first_name}
                 </Typography>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Last Name: {last_name}
+                Last Name: {currentUserRef.current.last_name}
                 </Typography>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                Email: {email}
+                Email: {currentUserRef.current.email}
                 </Typography>
             </div>
         )}
@@ -57,7 +76,11 @@ export default function BasicCard() {
             onClick={() => setIsEditing((isEditing) => !isEditing)}
             >Edit Profile
         </Button>
-        <Button variant='contained' size="small">Delete Profile</Button>
+        <Button variant='contained' 
+        size="small"
+        onClick={deleteUser}
+        >Delete Profile
+        </Button>
       </CardActions>
     </Card>
   );
