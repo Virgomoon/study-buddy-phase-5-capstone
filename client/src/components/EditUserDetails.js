@@ -10,7 +10,7 @@ function EditUserDetails({setIsEditing}) {
     // const { username, first_name, last_name, email} = editedState
 
     console.log(editedState)
-    console.log(currentUser)
+    console.log(id)
 
     function handleFormSubmit(e) {
         e.preventDefault();
