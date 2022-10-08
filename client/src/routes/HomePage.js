@@ -16,15 +16,17 @@ function HomePage() {
       fetch("/me").then((r) => {
         if (r.ok) {
           r.json().then((user) => setCurrentUser(user));
+        } else {
+          navigate("/userlogin")
         }
       });
+    
     }, []);
 
       const showCard = currentUser ? <BasicCard /> : null
 
-    // if (currentUser === null) {
-    //   return navigate("/userlogin");
-    // } 
+      // const navto = !currentUser ? navigate("/userlogin") : null
+
 
   return (
     <>
