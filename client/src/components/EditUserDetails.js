@@ -41,7 +41,7 @@ function EditUserDetails({setIsEditing}) {
           defaultValue={editedState.username}
           onChange={(e) => setEditedState(e.target.value)}
         />
-        <label>First Name</label>
+        {/* <label>First Name</label>
         <input
           type="text"
           name="first_name"
@@ -64,7 +64,7 @@ function EditUserDetails({setIsEditing}) {
           autoComplete="off"
           defaultValue={editedState.email}
           onChange={(e) => setEditedState(e.target.value)}
-        />
+        /> */}
       
         <input type="submit" value="Save" />
       </form>

@@ -3,6 +3,8 @@ import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
+import EditNote from '../components/EditNote';
+import NoteCard from '../components/NoteCard';
 import {Navigate} from 'react-router-dom'
 import Header from '../components/Header';
 
@@ -12,6 +14,7 @@ function ViewNotes() {
   const { subjectList, setSubjectList } = useContext(SubjectContext)
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
+  
 
   async function getSubjects(){
     
@@ -43,6 +46,22 @@ function ViewNotes() {
   }, []);
   console.log(userNotes)
 
+  function handleDeleteNote(id) {
+    const updatedNotes = userNotes.filter((note) => note.id !== id);
+    setUserNotes(updatedNotes);
+  }
+
+  function handleUpdateNotes(updatedNoteObj) {
+    const updatedNotes = userNotes.map((note) => {
+      if (note.id === updatedNoteObj.id) {
+        return updatedNoteObj;
+      } else {
+        return note;
+      }
+    });
+    setUserNotes(updatedNotes);
+  }
+
   const subjectFilter = (
   <div className='header'>
   <div className='title-container'>
@@ -64,13 +83,15 @@ const filteredNotes = userNotes.filter((note) => note.subject.title  ===  select
 
 const displayNotes = filteredNotes.map((note)=> {
   return(
-      <div key={note.id} id={note.id}  >
-          <h2>{note.title}</h2>
-          <p>{note.entry}</p>
-          <span>Buddies: {note.users.length} </span>
-
-      </div>
-  )
+    
+        <NoteCard key={note.id}
+          id={note.id}
+          entry={note.entry}
+          onDeleteNote={handleDeleteNote}
+          onUpdateNote={handleUpdateNotes}
+        /> 
+        
+    )
   })
 
 console.log(selectedSubject)
@@ -83,6 +104,7 @@ console.log(selectedSubject)
     <FetchUserDetails />
     {subjectFilter}
     {displayNotes}
+    
     </>
   )
 }

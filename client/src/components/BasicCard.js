@@ -25,6 +25,11 @@ export default function BasicCard() {
     const [isEditing, setIsEditing] = useState(false);
     
     const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
+
+    const [username, setUsername] = useState(currentUserRef.current.username)
+    const [firstName, setFirstName] = useState(currentUserRef.current.first_name)
+    const [lastName, setLastName] = useState(currentUserRef.current.last_name)
+    const [email, setEmail] = useState(currentUserRef.current.email)
     
     useEffect(() => {
         if (!currentUser) return "";
@@ -49,18 +54,46 @@ export default function BasicCard() {
           setIsEditing={setIsEditing}
         />) : (
             <div>
+            <div className="actions" id="username">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Username: {currentUserRef.current.username}
                 </Typography>
+            <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                ✏️
+                </span>
+            </button>
+            </div>
+            <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 First Name: {currentUserRef.current.first_name}
                 </Typography>
+                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                ✏️
+                </span>
+            </button>
+            </div>
+            <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Last Name: {currentUserRef.current.last_name}
                 </Typography>
+                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                ✏️
+                </span>
+            </button>
+            </div>
+            <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Email: {currentUserRef.current.email}
                 </Typography>
+                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                ✏️
+                </span>
+            </button>
+            </div>
             </div>
         )}
         
