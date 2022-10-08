@@ -26,7 +26,7 @@ export default function BasicCard() {
     
     const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
     
-    console.log(currentUserRef.current)
+    console.log(currentUser)
     useEffect(() => {
         if (!currentUser) return "";
       }, [])
@@ -43,7 +43,7 @@ export default function BasicCard() {
         navigate("/userlogin")
     }
 
-    console.log(currentUserRef.current)
+    console.log(currentUser)
     
 
   return (

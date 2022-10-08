@@ -9,53 +9,51 @@ function SignUp() {
 
   const navigate = useNavigate();
   
-  const [formData, setFormData] = useState({ 
-    first_name: "", 
-    last_name: "", 
-    username: "", 
-    email: "", 
-    password: "", 
-    password_confirmation:"",
-  });
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [username, setUserName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordConfirm, setPasswordConfirm] = useState("")
+  
 
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  }
+  // function handleChange(e) {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // }
 
   function handleAddUser(e){
     e.preventDefault()
 
     let newAdd = ({
-      first_name: e.target.first_name.value, 
-      last_name: e.target.last_name.value, 
-      username: e.target.username.value, 
-      email: e.target.email.value, 
-      password: e.target.password.value, 
-      password_confirmation: e.target.password_confirmation.value,
-
+      first_name: firstName, 
+      last_name: lastName, 
+      username: username, 
+      email: email, 
+      password: password, 
+      password_confirmation: passwordConfirm
     })
 
-    setFormData({
-      first_name: "", 
-      last_name: "", 
-      username: "", 
-      email: "", 
-      password: "", 
-      password_confirmation:"",
-      })
+    console.log(e.target.value)
 
-      fetch("/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newAdd),
-        })
-    .then((res)=> res.json())
-    .then((added)=> console.log(added))
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAdd),
+      })
+  .then((res)=> res.json())
+  .then((added)=> console.log(added))
+
+    setFirstName("")
+    setLastName("")
+    setUserName("")
+    setEmail("")
+    setPassword("")
+    setPasswordConfirm("")
 
     navigate("/userlogin")
    
@@ -75,24 +73,24 @@ function SignUp() {
           required
           id="outlined-required"
           label="First Name"
-          defaultValue={formData.first_name}
-          onChange={handleChange}
+          defaultValue={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
           />
 
         <TextField
           required
           id="outlined-required"
           label="Last Name"
-          defaultValue={formData.last_name}
-          onChange={handleChange}
+          defaultValue={lastName}
+          onChange={(e) => setLastName(e.target.value)}
           />
 
         <TextField
           required
           id="outlined-required"
           label="Username"
-          defaultValue={formData.username}
-          onChange={handleChange}
+          defaultValue={username}
+          onChange={(e) => setUserName(e.target.value)}
           />
         </div>
 
@@ -101,8 +99,8 @@ function SignUp() {
           required
           id="outlined-required"
           label="Email"
-          defaultValue={formData.email}
-          onChange={handleChange}
+          defaultValue={email}
+          onChange={(e) => setEmail(e.target.value)}
           />
 
         <TextField
@@ -110,8 +108,8 @@ function SignUp() {
           label="Password"
           type="password"
           required
-          defaultValue={formData.password}
-          onChange={handleChange}
+          defaultValue={password}
+          onChange={(e) => setPassword(e.target.value)}
           />
 
         <TextField
@@ -119,12 +117,13 @@ function SignUp() {
           label="Password Confirmation"
           type="password"
           required
-          defaultValue={formData.password_confirmation}
-          onChange={handleChange}
+          defaultValue={passwordConfirm}
+          onChange={(e) => setPasswordConfirm(e.target.value)}
           />
         </div>
 
-        <Button variant='contained'>Submit</Button>
+        <Button type='submit' variant='contained'
+        onClick={handleAddUser}>Submit</Button>
 
     </Box>
 

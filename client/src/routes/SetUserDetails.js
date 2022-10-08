@@ -11,7 +11,7 @@ export default function SetUserDetails() {
     const [password, setPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
     
-    const { setCurrentUser, currentUser, currentUserRef  } = useContext(UserContext)
+    const {  currentUser, setCurrentUser, currentUserRef  } = useContext(UserContext)
     
     const navigate = useNavigate()
     
