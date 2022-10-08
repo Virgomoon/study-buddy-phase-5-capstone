@@ -10,12 +10,12 @@ function ViewNotes() {
   const { currentUser } = useContext(UserContext)
 
   const [ subjectList, setSubjectList ] = useState([])
-  const [ selectedSubject, setSelectedSubject ] = useState("Literature")
+  const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
 
   async function getSubjects(){
     
-    const r = await fetch('/subjects');
+    const r = await fetch("/subjects");
     const data = r.json();
     return data;
   }
@@ -56,7 +56,7 @@ function ViewNotes() {
               ))}
       </select> 
   </div>
-</div>)
+</div>) 
 
 const filteredNotes = userNotes.filter((note) => note.subject.title  ===  selectedSubject);
 

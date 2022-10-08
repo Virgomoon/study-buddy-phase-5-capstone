@@ -26,7 +26,6 @@ export default function BasicCard() {
     
     const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
     
-    console.log(currentUser)
     useEffect(() => {
         if (!currentUser) return "";
       }, [])
@@ -42,10 +41,7 @@ export default function BasicCard() {
         setCurrentUser(null)
         navigate("/userlogin")
     }
-
-    console.log(currentUser)
     
-
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>

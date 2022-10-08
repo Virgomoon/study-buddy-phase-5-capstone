@@ -26,9 +26,6 @@ function HomePage() {
     //   return navigate("/userlogin");
     // } 
 
-    console.log(currentUserRef.current)
-    // console.log(id)
-
   return (
     <>
     <Header />
