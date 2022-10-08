@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/userDetails';
+import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import {Navigate} from 'react-router-dom'
@@ -8,8 +9,7 @@ import Header from '../components/Header';
 function ViewNotes() {
 
   const { currentUser } = useContext(UserContext)
-
-  const [ subjectList, setSubjectList ] = useState([])
+  const { subjectList, setSubjectList } = useContext(SubjectContext)
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
 
@@ -30,7 +30,7 @@ function ViewNotes() {
 
   async function getNotes(){
     
-    const r = await fetch('/notes');
+    const r = await fetch(`/notes/${currentUser.id}`);
     const data = r.json();
     return data;
   }

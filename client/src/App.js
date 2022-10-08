@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import { UserProvider } from "./context/userDetails";
+import { SubjectProvider } from "./context/subjectList";
 import Header from "./components/Header";
 import Buddies from "./routes/Buddies";
 import SetUserDetails from "./routes/SetUserDetails";
@@ -35,7 +36,9 @@ function App() {
 
   return (
     <UserProvider>
+      <SubjectProvider>
         <RouterProvider router={router} />
+      </SubjectProvider>
     </UserProvider>
   );
 }

@@ -2,17 +2,17 @@ class NotesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
-        notes = @current_user.notes
+        notes = Note.all
         render json: notes
     end
 
     def show
-        note = find_note
+        note = @current_user.notes
         render json: note
     end
 
     def create
-        note = @current_user.notes.create(note_params)
+        note = Note.create(note_params)
         render json: note, status: :created
     end
 

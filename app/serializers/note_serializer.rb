@@ -1,5 +1,5 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :title, :entry, :ref_links, :vid_url
+  attributes :id, :title, :entry, :ref_links, :vid_url, :subject_id, :user_id
 
   belongs_to :subject
   belongs_to :user
