@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :buddies
   resources :notes
-  resources :subjects, only: [:index, :show]
+  resources :subjects, only: [:index, :show, :create, :destroy]
   resources :users, only: [:index, :update, :destroy]
   resources :user_notes
 

@@ -32,6 +32,9 @@ function NavBar() {
         <ListItem button>
           <NavLink to="/mybuddies">Buddies</NavLink>
         </ListItem>
+        <ListItem button>
+          <NavLink to="/add_subject">Add Subject</NavLink>
+        </ListItem>
       </List>
     </div>
   )

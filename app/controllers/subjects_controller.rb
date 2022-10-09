@@ -9,4 +9,15 @@ class SubjectsController < ApplicationController
         subjects = @current_user.subjects
         render json: subjects.uniq
     end
+
+    def create
+        subject = Subject.create(title: params[:title])
+        render json: subject
+    end
+
+    def destroy
+        subject = Subject.find(params[:id])
+        subject.destroy
+        head :no_content
+    end
 end

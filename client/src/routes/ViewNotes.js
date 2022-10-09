@@ -14,6 +14,7 @@ function ViewNotes() {
   const { subjectList, setSubjectList } = useContext(SubjectContext)
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
+  const [subjectArr, setSubArr] = useState(Object.values(subjectList))
   
 
   async function getSubjects(){
@@ -29,7 +30,13 @@ function ViewNotes() {
     });
     
   }, []);
-  console.log(subjectList)
+
+  // useEffect(() => {
+  //   if (!subjectArr)
+  //   setSubArr(Object.values(subjectList))
+  
+  // }, []);
+  // console.log(subjectArr)
 
   async function getNotes(){
     
@@ -44,7 +51,7 @@ function ViewNotes() {
         setUserNotes(result);
     });
   }, []);
-  console.log(userNotes)
+  // console.log(userNotes)
 
   function handleDeleteNote(id) {
     const updatedNotes = userNotes.filter((note) => note.id !== id);
@@ -62,6 +69,9 @@ function ViewNotes() {
     setUserNotes(updatedNotes);
   }
 
+  // console.log(subjectList)
+  // console.log(subjectArr)
+
   const subjectFilter = (
   <div className='header'>
   <div className='title-container'>
@@ -70,9 +80,9 @@ function ViewNotes() {
   <div className='select-container'>
       <label>Select Subject</label>
       <select name="category" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
-          {subjectList.map((sub) => (
+          { subjectArr[0] ? subjectArr.map((sub) => (
               <option key={sub.id} id={sub.id} value={sub.title}>{sub.title}</option>
-              ))}
+              )) : null}
       </select> 
   </div>
 </div>) 
@@ -94,7 +104,7 @@ const displayNotes = filteredNotes.map((note)=> {
     )
   })
 
-console.log(selectedSubject)
+// console.log(selectedSubject)
 
   return (
     <>

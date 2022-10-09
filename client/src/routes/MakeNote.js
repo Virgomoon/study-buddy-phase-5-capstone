@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import { Navigate, useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import SubjectAdd from '../components/SubjectAdd';
 
 
 function Login() {
@@ -17,6 +18,9 @@ function Login() {
   const { currentUser, setCurrentUser } = useContext(UserContext)
   const { subjectList, setSubjectList } = useContext(SubjectContext)
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
+  const [ addingSubject, setAddingSubject ] = useState(false)
+  const [subjectArr, setSubArr] = useState(Object.values(subjectList))
+  console.log(subjectArr)
 
   
   
@@ -45,8 +49,23 @@ function Login() {
       setEntry("")
     }
     
-    const subject = subjectList.filter((sub)=> sub.title === selectedSubject)
-    console.log(subject[0].id)
+    // function subject() {
+    //   let foundSub = setSubjectList.find(Subject => {
+    //     Subject.title === selectedSubject
+    //   })
+    //   return foundSub
+    // }
+
+    // let subject
+
+    // useEffect(() => {
+      // subjectList.map((sub)=> console.log(sub))
+      
+      const subject = subjectArr.filter((sub)=> sub.title === selectedSubject)
+    // console.log(subject[0])
+      
+    // }, [subjectList]);
+    // console.log(subject[0].id)
     
   const subjectFilter = (
     <div className='header'>
@@ -56,13 +75,16 @@ function Login() {
     <div className='select-container'>
         <label>Select Subject</label>
         <select name="category" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
-            {subjectList.map((sub) => (
+            {subjectArr.map((sub) => (
                 <option key={sub.id} subject_id={sub.id} value={sub.title}>{sub.title}</option>
                 ))}
         </select> 
     </div>
   </div>) 
 
+  const displaySubjectAdd = addingSubject ? 
+  <SubjectAdd 
+  setAddingSubject={setAddingSubject} /> : null
 
   return (
     <>
@@ -70,6 +92,10 @@ function Login() {
     <div>Make Note</div>
     <NavBar />
     <FetchUserDetails />
+
+    {/* <Button variant='outlined'
+    onClick={() => setAddingSubject((addingSubject) => !addingSubject)}>Add Subject</Button>
+    {displaySubjectAdd} */}
     <Box
       component="form"
       sx={{
