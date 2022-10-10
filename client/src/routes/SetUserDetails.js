@@ -20,7 +20,7 @@ export default function SetUserDetails() {
       e.preventDefault();
       // debugger
       
-      await fetch("/login", {
+      await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

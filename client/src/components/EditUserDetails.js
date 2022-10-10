@@ -15,7 +15,7 @@ function EditUserDetails({setIsEditing}) {
     function handleFormSubmit(e) {
         e.preventDefault();
     
-        fetch(`/users/${id}`, {
+        fetch(`/api/users/${id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   { path: "/user", element: <FetchUserDetails /> },
   { path: "/userlogin", element: <SetUserDetails />},
-  { path: "/view_notes", element: <ViewNotes />},
+  { path: "/new", element: <ViewNotes />},
   { path: "/add_note", element: <MakeNote /> },
   { path: "/usersignup", element: <SignUp />},
   { path: "/mybuddies", element: <Buddies />},

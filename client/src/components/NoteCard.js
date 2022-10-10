@@ -7,7 +7,7 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
   function handleDeleteClick(e) {
     e.preventDefault();
 
-    fetch(`/notes/${id}`, {
+    fetch(`/api/notes/${id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {

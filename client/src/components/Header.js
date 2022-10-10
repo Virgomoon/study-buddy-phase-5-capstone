@@ -14,7 +14,7 @@ function Header() {
 
 
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
           method: "DELETE",
         }).then(() => setCurrentUser(null));
         navigate('/userlogin')

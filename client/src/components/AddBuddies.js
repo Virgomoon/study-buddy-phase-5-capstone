@@ -51,7 +51,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
       console.log(e.target.parentNode.parentNode.id)
       console.log(buddyObj)
 
-      fetch("/buddies", {
+      fetch("/api/buddies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

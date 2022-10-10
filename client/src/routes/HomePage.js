@@ -6,6 +6,8 @@ import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import BasicCard from '../components/BasicCard';
 
+
+
 function HomePage() {
 
     const navigate = useNavigate()
@@ -13,7 +15,7 @@ function HomePage() {
     
     useEffect(() => {
       // auto-login
-      fetch("/me").then((r) => {
+      fetch("/api/me").then((r) => {
         if (r.ok) {
           r.json().then((user) => setCurrentUser(user));
         } else {

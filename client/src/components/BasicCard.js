@@ -39,7 +39,7 @@ export default function BasicCard() {
 
     function deleteUser() {
         
-        fetch(`/users/${currentUser.id}`, {
+        fetch(`/api/users/${currentUser.id}`, {
         method: "DELETE",
       })
 

@@ -23,7 +23,7 @@ function NavBar() {
         </ListItem>
         <Divider />
         <ListItem button divider>
-          <NavLink to="/view_notes">Notes</NavLink>
+          <NavLink to="/new">Notes</NavLink>
         </ListItem>
         <ListItem button>
         <NavLink to="/add_note">New Note</NavLink>

@@ -1,5 +1,16 @@
 {
+  "name": "Study Buddy",
+  "description": "Build scripts for Heroku",
+  "engines": {
+    "node": "16.x"
+  },
   "devDependencies": {
     "react-router-dom": "^6.4.1"
+  },
+  "scripts": {
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "clean": "rm -rf public",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   }
 }

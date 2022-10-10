@@ -7,7 +7,7 @@ function EditNote({id, entry, setIsEditingNote, onUpdateNote}) {
     function handleFormSubmit(e) {
       e.preventDefault();
   
-      fetch(`/notes/${id}`, {
+      fetch(`/api/notes/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

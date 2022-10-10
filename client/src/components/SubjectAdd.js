@@ -10,7 +10,7 @@ function SubjectAdd({setAddingSubject}) {
     function handleAddSubject(e){
         e.preventDefault()
 
-        fetch("/subjects", {
+        fetch("/api/subjects", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
