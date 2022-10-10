@@ -20,7 +20,7 @@ export default function SetUserDetails() {
       e.preventDefault();
       // debugger
       
-      await fetch("/api/login", {
+      await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default function SetUserDetails() {
           required
           id="outlined-required"
           label="Username"
-          defaultValue={username}
+          value={username}
           onChange={(e) => setUserName(e.target.value)}
           />
 
@@ -66,7 +66,7 @@ export default function SetUserDetails() {
           label="Password"
           type="password"
           required
-          defaultValue={password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           />
       </div>

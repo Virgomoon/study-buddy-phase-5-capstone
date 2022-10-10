@@ -19,7 +19,7 @@ function ViewNotes() {
 
   async function getSubjects(){
     
-    const r = await fetch("/api/subjects");
+    const r = await fetch("/subjects");
     const data = r.json();
     return data;
   }

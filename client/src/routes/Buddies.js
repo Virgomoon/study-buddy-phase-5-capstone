@@ -21,7 +21,7 @@ function Buddies() {
 
   async function getBuddies(){
     
-    const r = await fetch(`/api/buddies/${currentUser.id}`);
+    const r = await fetch(`/buddies/${currentUser.id}`);
     const data = r.json();
     return data;
   }

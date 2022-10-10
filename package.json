@@ -1,8 +1,8 @@
 {
-  "name": "Study Buddy",
+  "name": "study-buddy-phase-5-capstone",
   "description": "Build scripts for Heroku",
   "engines": {
-    "node": "16.x"
+    "node": "17.6.0"
   },
   "devDependencies": {
     "react-router-dom": "^6.4.1"
