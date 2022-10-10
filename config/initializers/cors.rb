@@ -14,4 +14,4 @@
 #       :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
-end
+# end
