@@ -58,53 +58,53 @@ export default function BasicCard() {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Username: {currentUserRef.current.username}
                 </Typography>
-            <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                {/* <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                 <span role="img" aria-label="edit">
                 ✏️
                 </span>
-            </button>
+                </button> */}
             </div>
             <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 First Name: {currentUserRef.current.first_name}
                 </Typography>
-                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                {/* <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                 <span role="img" aria-label="edit">
                 ✏️
                 </span>
-            </button>
+                </button> */}
             </div>
             <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Last Name: {currentUserRef.current.last_name}
                 </Typography>
-                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                {/* <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                 <span role="img" aria-label="edit">
                 ✏️
                 </span>
-            </button>
+                </button> */}
             </div>
             <div className="actions">
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                 Email: {currentUserRef.current.email}
                 </Typography>
-                <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                {/* <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
                 <span role="img" aria-label="edit">
                 ✏️
                 </span>
-            </button>
+                </button> */}
             </div>
             </div>
         )}
         
       </CardContent>
       <CardActions>
-        <Button 
+        {/* <Button 
             variant='outlined' 
             size="small"
             onClick={() => setIsEditing((isEditing) => !isEditing)}
             >Edit Profile
-        </Button>
+        </Button> */}
         <Button variant='contained' 
         size="small"
         onClick={deleteUser}

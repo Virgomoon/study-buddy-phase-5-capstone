@@ -3,7 +3,7 @@ class NoteSerializer < ActiveModel::Serializer
 
   belongs_to :subject
   belongs_to :user
-  has_many :users
+  # has_many :users
   # :subject_id
   # :user_id
  

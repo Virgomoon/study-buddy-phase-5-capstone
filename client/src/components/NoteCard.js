@@ -5,14 +5,17 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
   const [isEditingNote, setIsEditingNote] = useState(false);
 
   function handleDeleteClick(e) {
-      
+    e.preventDefault();
+
     fetch(`/notes/${id}`, {
       method: "DELETE",
-    })
+    }).then((r) => {
+      if (r.ok) {
     
     onDeleteNote(id);
+    }})
     }
-    
+  
     
     return (
       <div>

@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ViewBuddies from '../components/ViewBuddies';
 import AddBuddies from '../components/AddBuddies';
+// import AddIcon from '@mui/icons-material/Add';
 
 
 function Buddies() {
@@ -20,7 +21,7 @@ function Buddies() {
 
   async function getBuddies(){
     
-    const r = await fetch('/buddies');
+    const r = await fetch(`/buddies/${currentUser.id}`);
     const data = r.json();
     return data;
   }
@@ -32,6 +33,10 @@ function Buddies() {
   });
 
 }, []);
+
+function updateBuddyList(newBud) {
+  setMyBuddies(myBuddies=> [...myBuddies, newBud] )
+}
 
 function viewBuddies(){
   setShowBuddies(!showBuddies)
@@ -46,7 +51,7 @@ function viewProspects(){
     return setShowBuddies(!showBuddies)
 }
 }
-  console.log(myBuddies)
+  // console.log(myBuddies)
   //   console.log(id)
   return (
     <>
@@ -61,7 +66,7 @@ function viewProspects(){
       onClick={viewProspects}>Add Buddies</Button>
     </Box>
     { showBuddies? (<ViewBuddies myBuddies={myBuddies}/>) : null}
-    { seeProspects ? (<AddBuddies />) : null}
+    { seeProspects ? (<AddBuddies updateBuddyList={updateBuddyList} />) : null}
     </>
   )
 }

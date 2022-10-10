@@ -20,7 +20,7 @@ function Login() {
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ addingSubject, setAddingSubject ] = useState(false)
   const [subjectArr, setSubArr] = useState(Object.values(subjectList))
-  console.log(subjectArr)
+  // console.log(subjectArr)
 
   
   

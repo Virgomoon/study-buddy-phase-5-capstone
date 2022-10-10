@@ -9,22 +9,31 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import EditUserDetails from './EditUserDetails';
 import { useNavigate } from "react-router-dom";
+import RemoveIcon from '@mui/icons-material/Remove';
+import Paper from '@mui/material/Paper';
 
 function ViewBuddies({myBuddies}) {
 
-    myBuddies.map(buddy => console.log(buddy.username))
+    // myBuddies.map(buddy => console.log(buddy.username))
     // const { first_name, last_name, username, email } = myBuddies
-    // console.log(first_name)
-    const displayBuds = myBuddies.map((buddy) =>{
+    console.log(Object.values(myBuddies.map((buddy)=> buddy)))
+
+    const displayBuds = Object.values(myBuddies).map((buddy) =>{
         return (
-        <div key={buddy.id}>
-            <div>{buddy.username}</div>
-            <div>{buddy.first_ame}</div>
-            <div>{buddy.last_name}</div>
-            <div>{buddy.email}</div>
+        <div id={buddy.user.id}>
+          <Paper key={buddy.buddy.id} >
+            <h4>{buddy.buddy.username}</h4>
+            <h4>{buddy.buddy.first_name}</h4>
+            <h4>{buddy.buddy.last_name}</h4>
+            <h4>{buddy.buddy.email}</h4>
+          </Paper>
+            <Button variant='contained'><RemoveIcon /></Button>   
         </div>
             
-        )})
+        )}) 
+
+        // console.log(Object.values(myBuddies))
+
   return (
     <div>{displayBuds}</div>
   )

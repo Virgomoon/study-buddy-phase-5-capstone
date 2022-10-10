@@ -31,11 +31,10 @@ function ViewNotes() {
     
   }, []);
 
-  // useEffect(() => {
-  //   if (!subjectArr)
-  //   setSubArr(Object.values(subjectList))
+  useEffect(() => {
+    setSubArr(Object.values(subjectList))
   
-  // }, []);
+  }, [subjectList]);
   // console.log(subjectArr)
 
   async function getNotes(){
