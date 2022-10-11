@@ -19,7 +19,7 @@ function ViewNotes() {
 
   async function getSubjects(){
     
-    const r = await fetch("/subjects");
+    const r = await fetch("/api/subjects");
     const data = r.json();
     return data;
   }
@@ -39,7 +39,7 @@ function ViewNotes() {
 
   async function getNotes(){
     
-    const r = await fetch(`/notes/${currentUser.id}`);
+    const r = await fetch(`/api/notes/${currentUser.id}`);
     const data = r.json();
     return data;
   }

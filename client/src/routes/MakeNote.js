@@ -34,7 +34,7 @@ function Login() {
         entry: entry
       })
       
-      await fetch("/notes", {
+      await fetch("/api/notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

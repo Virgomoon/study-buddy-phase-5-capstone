@@ -38,7 +38,7 @@ function SignUp() {
 
     console.log(e.target.value)
 
-    fetch("/signup", {
+    fetch("/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

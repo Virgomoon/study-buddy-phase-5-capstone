@@ -19,7 +19,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
 
     async function getProspects(){
     
-        const r = await fetch('/users');
+        const r = await fetch('/api/users');
         const data = r.json();
         return data;
       }
