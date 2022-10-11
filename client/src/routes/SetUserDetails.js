@@ -9,9 +9,9 @@ import Button from '@mui/material/Button';
 export default function SetUserDetails() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const [loggedIn, setLoggedIn] = useState(false)
+    // const [loggedIn, setLoggedIn] = useState(false)
     
-    const {  currentUser, setCurrentUser, currentUserRef  } = useContext(UserContext)
+    const {  currentUser, setCurrentUser } = useContext(UserContext)
     
     const navigate = useNavigate()
     
@@ -20,7 +20,7 @@ export default function SetUserDetails() {
       e.preventDefault();
       // debugger
       
-      await fetch("/api/login", {
+      await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function SetUserDetails() {
       })
       navigate('/')
     }
-    console.log(currentUserRef.current)
+    // console.log(currentUserRef.current)
 
     // useEffect(() => {
     //   if (currentUser) {

@@ -2,19 +2,13 @@
   "name": "study-buddy-phase-5-capstone",
   "description": "Build scripts for Heroku",
   "engines": {
-    "node": "17.6.0",
-    "npm":"8.5.1"
-  },
-  "devDependencies": {
-    "react-router-dom": "^6.4.1"
+    "node": ">= 14"
   },
   "scripts": {
     "build": "npm install --prefix client && npm run build --prefix client",
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
-  },
-  "dependencies": {
-    "serve": "^14.0.1"
   }
 }
+

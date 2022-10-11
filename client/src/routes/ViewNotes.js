@@ -19,8 +19,8 @@ function ViewNotes() {
 
   async function getSubjects(){
     
-    const r = await fetch("/api/subjects");
-    const data = r.json();
+    const r = await fetch("/subjects");
+    const data = await r.json();
     return data;
   }
 
@@ -31,6 +31,8 @@ function ViewNotes() {
     
   }, []);
 
+  console.log(subjectList)
+
   useEffect(() => {
     setSubArr(Object.values(subjectList))
   
@@ -39,8 +41,8 @@ function ViewNotes() {
 
   async function getNotes(){
     
-    const r = await fetch(`/api/notes/${currentUser.id}`);
-    const data = r.json();
+    const r = await fetch(`/notes/${currentUser.id}`);
+    const data = await r.json();
     return data;
   }
 

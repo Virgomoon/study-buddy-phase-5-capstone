@@ -5,12 +5,14 @@ function SubjectAdd({setAddingSubject}) {
 
     const [newSubject, setNewSubject] = useState("")
 
-    const {setSubjectList} = useContext(SubjectContext)
+    const {subjectlist, setSubjectList} = useContext(SubjectContext)
+
+    console.log(subjectlist)
 
     function handleAddSubject(e){
         e.preventDefault()
 
-        fetch("/api/subjects", {
+        fetch("/subjects", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -18,7 +20,7 @@ function SubjectAdd({setAddingSubject}) {
             body: JSON.stringify({title: newSubject}),
             })
         .then((res)=> res.json())
-        .then((added)=> setSubjectList(added))
+        .then((added)=> setSubjectList([...subjectlist, added]))
 
         setNewSubject("")
       

@@ -19,7 +19,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
 
     async function getProspects(){
     
-        const r = await fetch('/api/users');
+        const r = await fetch('/users');
         const data = r.json();
         return data;
       }
@@ -51,7 +51,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
       console.log(e.target.parentNode.parentNode.id)
       console.log(buddyObj)
 
-      fetch("/api/buddies", {
+      fetch("/buddies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

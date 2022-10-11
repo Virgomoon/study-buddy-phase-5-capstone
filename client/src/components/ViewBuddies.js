@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import RemoveIcon from '@mui/icons-material/Remove';
 import Paper from '@mui/material/Paper';
 
-function ViewBuddies({myBuddies}) {
+function ViewBuddies({myBuddies, onDeleteBuddy}) {
 
     // myBuddies.map(buddy => console.log(buddy.username))
     // const { first_name, last_name, username, email } = myBuddies
@@ -20,14 +20,14 @@ function ViewBuddies({myBuddies}) {
 
     const displayBuds = Object.values(myBuddies).map((buddy) =>{
         return (
-        <div id={buddy.user.id}>
+        <div id={buddy.buddy.id}>
           <Paper key={buddy.buddy.id} >
             <h4>{buddy.buddy.username}</h4>
             <h4>{buddy.buddy.first_name}</h4>
             <h4>{buddy.buddy.last_name}</h4>
             <h4>{buddy.buddy.email}</h4>
           </Paper>
-            <Button variant='contained'><RemoveIcon /></Button>   
+            <Button variant='contained' onClick={onDeleteBuddy}><RemoveIcon /></Button>   
         </div>
             
         )}) 

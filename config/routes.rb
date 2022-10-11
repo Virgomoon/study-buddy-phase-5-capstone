@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  # namespace :api do
     resources :buddies
     resources :notes
     resources :subjects, only: [:index, :show, :create, :destroy]
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get "/me", to: "users#show"
     
     get "/mynotes/:id", to: "usernotes#show"
-  end
+  # end
 
 
 
