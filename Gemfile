@@ -28,6 +28,21 @@ group :development do
   # gem "spring"
 end
 
+group :development do
+  gem 'listen', '~> 3.3'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
+group :test do
+  gem 'rspec-json_expectations'
+  gem 'shoulda-matchers', '~> 4.0'
+end
+
+gem "active_model_serializers", "~> 0.10.12"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 
