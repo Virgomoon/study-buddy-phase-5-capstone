@@ -1,6 +1,6 @@
 # README
 
-Site Deployed at: https://enigmatic-retreat-51493.herokuapp.com/userlogin
+Site Deployed at: https://enigmatic-retreat-51493.herokuapp.com/
 
 
 This README would normally document whatever steps are necessary to get the
