@@ -7,7 +7,7 @@ class NotesController < ApplicationController
     end
 
     def show
-        note = @current_user.notes
+        note = find_note
         render json: note
     end
 
@@ -39,8 +39,12 @@ class NotesController < ApplicationController
     # end
 
     def find_note
-        @current_user.notes.find(params[:id])
+        Note.find_by(id: params[:id])
     end
+
+    # def find_note
+    #     @current_user.notes.find(params[:id])
+    # end
 
     def render_not_found_response
         render json: { error: "Note not found" }, status: :not_found

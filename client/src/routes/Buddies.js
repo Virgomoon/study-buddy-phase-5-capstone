@@ -46,8 +46,6 @@ function viewBuddies(){
 }
 
 function deleteBuddies(e){
-  
-  e.preventDefault()
 
   fetch(`/buddies/${e.target.parentNode.parentNode.id}`, {
     method: "Delete"

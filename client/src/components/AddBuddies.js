@@ -20,7 +20,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
     async function getProspects(){
     
         const r = await fetch('/users');
-        const data = r.json();
+        const data = await r.json();
         return data;
       }
     
@@ -42,29 +42,27 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
     // console.log(potentialBuddies.map(buddy => buddy.id))
     // console.log(potentialBuddies.filter(buddy => buddy.id !== 2))
 
-    function handleAddBuddy(e){
+   async function handleAddBuddy(e){
 
       const buddyObj = {
         user_id: currentUser.id,
         buddy_id: e.target.parentNode.parentNode.id
       }
-      console.log(e.target.parentNode.parentNode.id)
-      console.log(buddyObj)
 
-      fetch("/buddies", {
+      await fetch("/buddies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(buddyObj),
       }).then((r) => {
-        if (r.ok) {
-          r.json().then((buddy) => {
+         r.json()
+         .then((buddy) => {
             updateBuddyList(buddy)
             // console.log(buddy)
           })
           
-        }
+        
         // console.log(resetPotentials(e.target.parentNode.parentNode.id))
         const n = resetPotentials(e.target.parentNode.parentNode.id)
         setPotentialBuddies(n)

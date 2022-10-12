@@ -41,7 +41,7 @@ function ViewNotes() {
 
   async function getNotes(){
     
-    const r = await fetch(`/notes/${currentUser.id}`);
+    const r = await fetch('/mynotes');
     const data = await r.json();
     return data;
   }
@@ -55,7 +55,9 @@ function ViewNotes() {
   // console.log(userNotes)
 
   function handleDeleteNote(id) {
-    const updatedNotes = userNotes.filter((note) => note.id !== id);
+    const updatedNotes = userNotes.filter((note) =>{ 
+      if(note.id !== id) return true;
+    });
     setUserNotes(updatedNotes);
   }
 
@@ -97,6 +99,7 @@ const displayNotes = filteredNotes.map((note)=> {
     
         <NoteCard key={note.id}
           id={note.id}
+          title={note.title}
           entry={note.entry}
           onDeleteNote={handleDeleteNote}
           onUpdateNote={handleUpdateNotes}

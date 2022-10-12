@@ -16,6 +16,7 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
     }})
     }
   
+    console.log(title)
     
     return (
       <div>
@@ -26,8 +27,7 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
       onUpdateNote={onUpdateNote}
     />) : ( 
 
-      <div key={id} 
-      id={id}  >
+      <div key={id} id={id}  >
       <h2>{title}</h2>
       <p>{entry}</p>
       {/* <span>Buddies: {note.users.length} </span> */}
