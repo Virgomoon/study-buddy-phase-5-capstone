@@ -6,7 +6,7 @@ class BuddiesController < ApplicationController
     end
     
     def show
-        buddies = @current_user.buddies.all
+        buddy = Buddy.find(params[:id])
         render json: buddies
     end
     def create
@@ -15,7 +15,7 @@ class BuddiesController < ApplicationController
     end
 
     def destroy
-        buddy = Buddy.find(params[:id])
+        buddy_find
         buddy.destroy
         head :no_content
     end
@@ -24,5 +24,9 @@ class BuddiesController < ApplicationController
 
     def add_buddy_params
         params.permit(:user_id, :buddy_id)
+    end
+
+    def buddy_find
+        buddy = Buddy.find(params[:id])
     end
 end
