@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get "/me", to: "users#show"
     
     get "/mynotes", to: "usernotes#index"
+    get "/mybuddynotes/:id", to: "buddynotes#show"
   # end
 
 

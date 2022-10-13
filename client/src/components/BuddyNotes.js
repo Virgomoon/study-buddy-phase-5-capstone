@@ -10,10 +10,27 @@ import Button from '@mui/material/Button';
 import ViewBuddies from './ViewBuddies';
 import AddBuddies from './AddBuddies';
 
-function BuddyNotes({setShowBuddyNotes}) {
+function BuddyNotes({setShowBuddyNotes, clickedId}) {
 
+  const [listBuddyNotes, setListBuddyNotes] = useState([])
   // const navigate = useNavigate();
-
+  
+  async function getBuddyNotes(){
+    
+    const r = await fetch(`/mybuddynotes/${clickedId}`);
+    const data = await r.json();
+    return data;
+  }
+  
+  useEffect(() => {
+    
+    getBuddyNotes().then(function(result) {
+      setListBuddyNotes(result);
+    });
+    
+  }, []);
+  console.log(listBuddyNotes)
+  
   return (
     <Box>
     <div>BuddyNotes</div>

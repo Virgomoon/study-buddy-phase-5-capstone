@@ -11,6 +11,7 @@ import EditUserDetails from './EditUserDetails';
 import { useNavigate } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import Paper from '@mui/material/Paper';
+import uuid from 'react-uuid';
 
 function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
 
@@ -76,7 +77,7 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
     // console.log(first_name)
     const findBuds = potentialBuddies.map((buddy) =>{
         return (
-          <div key={buddy.id}>
+          <div key={uuid()}>
         <Paper id={buddy.id} >
             <div>{buddy.username}</div>
             <div>{buddy.first_ame}</div>

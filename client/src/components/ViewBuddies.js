@@ -17,8 +17,15 @@ import uuid from 'react-uuid';
 function ViewBuddies({myBuddies, onDeleteBuddy}) {
 
   const [showBuddyNotes, setShowBuddyNotes] = useState(false)
+  const [clickedId, setClickedId] = useState("")
 
   const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    setShowBuddyNotes((showBuddyNotes) => !showBuddyNotes);
+    // setClickedId(id)
+    setClickedId(e.target.parentNode.id)
+  }
 
     // myBuddies.map(buddy => console.log(buddy.username))
     // const { first_name, last_name, username, email } = myBuddies
@@ -26,25 +33,26 @@ function ViewBuddies({myBuddies, onDeleteBuddy}) {
 
     const displayBuds = myBuddies.map((buddy) =>{
         return (
-        <div key={buddy.buddy.id}>
+        <div key={uuid()}>
           <Paper id={buddy.buddy.id} >
             <h4>{buddy.buddy.username}</h4>
             <h4>{buddy.buddy.first_name}</h4>
             <h4>{buddy.buddy.last_name}</h4>
             <h4>{buddy.buddy.email}</h4>
             <Button variant='contained' onClick={onDeleteBuddy}><RemoveIcon /></Button>
-            <Button variant='outlined' onClick={() => setShowBuddyNotes((showBuddyNotes) => !showBuddyNotes)}>Buddy Notes</Button>  
+            <Button variant='outlined' onClick={handleClick}>Buddy Notes</Button>  
           </Paper>
         </div>
             
         )}) 
 
-        // console.log(Object.values(myBuddies))
+        // () => setShowBuddyNotes((showBuddyNotes) => !showBuddyNotes)
+        // console.log(clickedId)
 
   return (
     <div>
       {
-        showBuddyNotes ? (<BuddyNotes setShowBuddyNotes={setShowBuddyNotes}/>) :
+        showBuddyNotes ? (<BuddyNotes setShowBuddyNotes={setShowBuddyNotes} clickedId={clickedId}/>) :
         <div>{displayBuds}</div>
       }
     </div>
