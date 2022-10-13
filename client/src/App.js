@@ -12,9 +12,9 @@ import ViewNotes from "./routes/ViewNotes";
 import AddSubject from "./routes/AddSubject";
 import './App.css';
 import NavBar from "./routes/NavBar";
-// import { useContext, useEffect } from 'react'
-// import { UserContext } from './context/userDetails'
-
+import { useContext, useEffect } from 'react'
+import { UserContext } from './context/userDetails'
+import { useNavigate } from "react-router-dom";
 
 
 const router = createBrowserRouter([
@@ -33,8 +33,22 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  
+  // const navigate = useNavigate()
 
+  
   // const { setUsername } = useContext(UserContext)
+  // useEffect(() => {
+  //   // auto-login
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setCurrentUser(user));
+  //     }  
+        
+      
+  //   });
+  
+  // }, []);
 
   
 

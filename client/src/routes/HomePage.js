@@ -12,18 +12,10 @@ function HomePage() {
 
     const navigate = useNavigate()
     const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
+
     
-    useEffect(() => {
-      // auto-login
-      fetch("/me").then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setCurrentUser(user));
-        } else {
-          navigate("/userlogin")
-        }
-      });
     
-    }, []);
+    
 
       const showCard = currentUser ? <BasicCard /> : null
 
