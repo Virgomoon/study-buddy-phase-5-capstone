@@ -16,8 +16,26 @@ function Buddies() {
 
   const { currentUser } = useContext(UserContext)
   const [myBuddies, setMyBuddies] = useState([])
+  const [potentialBuddies, setPotentialBuddies] = useState([])
+  
   const [showBuddies, setShowBuddies] = useState(false);
   const [seeProspects, setSeeProspects] = useState(false)
+
+
+     const getProspects = async () =>{
+    
+        const response = await fetch('/users');
+        const data = await response.json()
+        console.log(data)
+        setPotentialBuddies(data);
+        return data
+      }
+    
+      useEffect(() => {
+        
+        getProspects();
+    
+      }, []);
 
   async function getBuddies(){
     
@@ -35,7 +53,12 @@ function Buddies() {
 }, []);
 
 function updateBuddyList(newBud) {
-  setMyBuddies(myBuddies=> [...myBuddies, newBud] )
+  if(myBuddies.find((data) => data.id === newBud.id)) {
+    alert("You are already buds!")
+  } else {
+    const newBuddyList = [...myBuddies, newBud]
+    setMyBuddies(newBuddyList)
+  }
 }
 
 function viewBuddies(){
@@ -66,12 +89,10 @@ function viewProspects(){
 }
 
   function filterBuddyList(id) {
-    const newList = myBuddies.filter((buddy)=>{
-      if(buddy.id !== id) return true;
-    })
+    const newList = myBuddies.filter((buddy)=> buddy.id !== id);
+    setMyBuddies(newList)
+    }
 
-    return newList
-  }
   // console.log(myBuddies)
   //   console.log(id)
   return (
@@ -85,8 +106,8 @@ function viewProspects(){
       onClick={viewBuddies}>See Buddies</Button>
       <Button variant='contained'
       onClick={viewProspects}>Add Buddies</Button>
-    { showBuddies? (<ViewBuddies myBuddies={myBuddies} onDeleteBuddy={deleteBuddies}/>) : null}
-    { seeProspects ? (<AddBuddies updateBuddyList={updateBuddyList} />) : null}
+    { showBuddies? (<ViewBuddies myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
+    { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} />) : null}
     </Box>
     </>
   )

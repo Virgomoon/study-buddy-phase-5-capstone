@@ -13,25 +13,26 @@ import AddIcon from '@mui/icons-material/Add';
 import Paper from '@mui/material/Paper';
 import uuid from 'react-uuid';
 
-function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
+function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyList, updateBuddyList}) {
 
-    const [potentialBuddies, setPotentialBuddies] = useState([])
-    const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
+  const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
 
-    async function getProspects(){
+  // const [potentialBuddies, setPotentialBuddies] = useState([])
+
+    //  const getProspects = async () =>{
     
-        const r = await fetch('/users');
-        const data = await r.json();
-        return data;
-      }
+    //     let response = await fetch('/users').then((r) =>{
+    //        r.json();
+    //     })
+    //     console.log(response)
+    //     setPotentialBuddies(response);
+    //   }
     
-      useEffect(() => {
+    //   useEffect(() => {
         
-        getProspects().then(function(result) {
-          setPotentialBuddies(result);
-      });
+    //     getProspects();
     
-    }, []);
+    //   }, []);
 
     function resetPotentials(id) {
 
@@ -40,7 +41,11 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
       return toDisplay;
     }
 
-    // console.log(potentialBuddies.map(buddy => buddy.id))
+    if (potentialBuddies){
+
+      potentialBuddies.map(user => {console.log(user.username)
+        console.log(user.id)})
+      }
     // console.log(potentialBuddies.filter(buddy => buddy.id !== 2))
 
    async function handleAddBuddy(e){
@@ -49,26 +54,26 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
         user_id: currentUser.id,
         buddy_id: e.target.parentNode.parentNode.id
       }
+      console.log(buddyObj)
 
-      await fetch("/buddies", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(buddyObj),
-      }).then((r) => {
-         r.json()
-         .then((buddy) => {
-            updateBuddyList(buddy)
-            // console.log(buddy)
-          })
+      // await fetch("/buddies", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(buddyObj),
+      // }).then((r) => {
+      //    r.json()
+      //    .then((buddy) => {
+      //       updateBuddyList(buddy)
+      //     })
+          // console.log(buddy)
           
-        
         // console.log(resetPotentials(e.target.parentNode.parentNode.id))
-        const n = resetPotentials(e.target.parentNode.parentNode.id)
-        setPotentialBuddies(n)
-        // console.log(potentialBuddies)
-      })
+      //   const n = resetPotentials(e.target.parentNode.parentNode.id)
+      //   setPotentialBuddies(n)
+      // })
+      // console.log(potentialBuddies)
 
     }
 
@@ -78,21 +83,22 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
     const findBuds = potentialBuddies.map((buddy) =>{
         return (
           <div key={uuid()}>
-        <Paper id={buddy.id} >
-            <div>{buddy.username}</div>
-            <div>{buddy.first_ame}</div>
-            <div>{buddy.last_name}</div>
-            <div>{buddy.email}</div>
+          <Paper id={buddy.id} >
+          <div>{buddy.username}</div>
+          <div>{buddy.first_ame}</div>
+          <div>{buddy.last_name}</div>
+          <div>{buddy.email}</div>
           
-           <Button variant='contained'onClick={handleAddBuddy}> <AddIcon /> </Button>
-        </Paper>
+          <Button variant='contained'onClick={handleAddBuddy}> <AddIcon /> </Button>
+          </Paper>
           </div>
-            
-        )})
+          
+          )})
+    
 
   return (
     <Box>
-      <div>{findBuds}</div>
+      { potentialBuddies ? (<div>{findBuds}</div>) : (<div>Loading...</div>)}
     </Box>
   )
 }

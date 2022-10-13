@@ -18,8 +18,7 @@ function ViewBuddies({myBuddies, onDeleteBuddy}) {
 
   const [showBuddyNotes, setShowBuddyNotes] = useState(false)
   const [clickedId, setClickedId] = useState("")
-
-  const navigate = useNavigate();
+  
 
   const handleClick = (e) => {
     setShowBuddyNotes((showBuddyNotes) => !showBuddyNotes);
