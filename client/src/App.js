@@ -15,6 +15,8 @@ import NavBar from "./routes/NavBar";
 // import { useContext, useEffect } from 'react'
 // import { UserContext } from './context/userDetails'
 
+
+
 const router = createBrowserRouter([
   {
     path: "/", element: <HomePage />,

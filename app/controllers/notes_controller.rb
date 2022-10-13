@@ -24,6 +24,7 @@ class NotesController < ApplicationController
 
     def destroy
         note = find_note
+        
         note.destroy
         head :no_content
     end
