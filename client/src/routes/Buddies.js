@@ -21,7 +21,7 @@ function Buddies() {
 
   async function getBuddies(){
     
-    const r = await fetch(`/buddies/${currentUser.id}`);
+    const r = await fetch("/buddies");
     const data = await r.json();
     return data;
   }
@@ -84,9 +84,9 @@ function viewProspects(){
       onClick={viewBuddies}>See Buddies</Button>
       <Button variant='contained'
       onClick={viewProspects}>Add Buddies</Button>
-    </Box>
     { showBuddies? (<ViewBuddies myBuddies={myBuddies} onDeleteBuddy={deleteBuddies}/>) : null}
     { seeProspects ? (<AddBuddies updateBuddyList={updateBuddyList} />) : null}
+    </Box>
     </>
   )
 }

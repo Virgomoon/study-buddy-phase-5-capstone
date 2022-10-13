@@ -76,15 +76,15 @@ function AddBuddies({myBuddies, buddyList, updateBuddyList}) {
     // console.log(first_name)
     const findBuds = potentialBuddies.map((buddy) =>{
         return (
-          <div id={buddy.id}>
-        <Paper key={buddy.id} >
+          <div key={buddy.id}>
+        <Paper id={buddy.id} >
             <div>{buddy.username}</div>
             <div>{buddy.first_ame}</div>
             <div>{buddy.last_name}</div>
             <div>{buddy.email}</div>
-        </Paper>
           
            <Button variant='contained'onClick={handleAddBuddy}> <AddIcon /> </Button>
+        </Paper>
           </div>
             
         )})
