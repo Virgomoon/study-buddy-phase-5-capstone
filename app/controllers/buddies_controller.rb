@@ -7,7 +7,7 @@ class BuddiesController < ApplicationController
     
     def show
         buddy = Buddy.find(params[:id])
-        render json: buddies
+        render json: buddy
     end
     def create
         buddy = Buddy.create(add_buddy_params)
@@ -15,7 +15,7 @@ class BuddiesController < ApplicationController
     end
 
     def destroy
-        buddy_find
+        buddy = buddy_find
         buddy.destroy
         head :no_content
     end

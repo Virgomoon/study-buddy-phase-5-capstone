@@ -3,9 +3,9 @@ import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
-import EditNote from '../components/EditNote';
+// import EditNote from '../components/EditNote';
 import NoteCard from '../components/NoteCard';
-import {Navigate} from 'react-router-dom'
+// import {Navigate} from 'react-router-dom'
 import Header from '../components/Header';
 
 function ViewNotes() {
@@ -31,7 +31,7 @@ function ViewNotes() {
     
   }, []);
 
-  console.log(subjectList)
+  // console.log(subjectList)
 
   useEffect(() => {
     setSubArr(Object.values(subjectList))

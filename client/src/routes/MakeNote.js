@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
-import { Navigate, useNavigate } from "react-router-dom";
+// import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';

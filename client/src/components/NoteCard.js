@@ -4,6 +4,8 @@ import EditNote from './EditNote';
 function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
   const [isEditingNote, setIsEditingNote] = useState(false);
 
+  console.log(id)
+
   function handleDeleteClick(e) {
     e.preventDefault();
 
@@ -16,7 +18,7 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
     }})
     }
   
-    console.log(title)
+    // console.log(title)
     
     return (
       <div>

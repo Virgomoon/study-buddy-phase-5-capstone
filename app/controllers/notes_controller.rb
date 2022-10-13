@@ -33,14 +33,14 @@ class NotesController < ApplicationController
     def note_params
         params.permit(:subject_id, :user_id, :title, :entry, :ref_links, :vid_url)
     end
-
+    
+    def find_note
+        Note.find_by(id: params[:id])
+    end
     # def find_user
     #     User.find_by(id: params[:id])
     # end
 
-    def find_note
-        Note.find_by(id: params[:id])
-    end
 
     # def find_note
     #     @current_user.notes.find(params[:id])

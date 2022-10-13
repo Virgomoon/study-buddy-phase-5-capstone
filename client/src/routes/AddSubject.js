@@ -1,16 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/userDetails';
+// import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
-import { Navigate, useNavigate } from "react-router-dom";
+// import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import SubjectAdd from '../components/SubjectAdd';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import ViewBuddies from '../components/ViewBuddies';
-import AddBuddies from '../components/AddBuddies';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+// import Button from '@mui/material/Button';
+// import ViewBuddies from '../components/ViewBuddies';
+// import AddBuddies from '../components/AddBuddies';
 
 function AddSubject() {
 
