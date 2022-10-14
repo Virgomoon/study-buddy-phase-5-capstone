@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+
     def index
         subjects = Subject.all
         render json: subjects, each_serializer: SubjectSerializer

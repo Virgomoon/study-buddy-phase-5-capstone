@@ -29,9 +29,9 @@ export default function SetUserDetails() {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) => setCurrentUser(user));
+          navigate('/')
         }
       })
-      navigate('/')
     }
     // console.log(currentUserRef.current)
 

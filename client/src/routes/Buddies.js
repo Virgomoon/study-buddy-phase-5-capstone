@@ -41,23 +41,21 @@ function Buddies() {
     
     const r = await fetch("/buddies");
     const data = await r.json();
+    console.log(data)
+    setMyBuddies(data);
     return data;
   }
 
   useEffect(() => {
     
-    getBuddies().then(function(result) {
-      setMyBuddies(result);
-  });
+    getBuddies()
 
 }, []);
 
 function updateBuddyList(newBud) {
   if(myBuddies.find((data) => data.id === newBud.id)) {
-    alert("You are already buds!")
-  } else {
     const newBuddyList = [...myBuddies, newBud]
-    setMyBuddies(newBuddyList)
+    return setMyBuddies(newBuddyList)
   }
 }
 
@@ -68,17 +66,17 @@ function viewBuddies(){
   }
 }
 
-function deleteBuddies(e){
+function deleteBuddies(e, buddy){
   e.preventDefault()
 
-  fetch(`/buddies/${e.target.parentNode.parentNode.id}`, {
+  fetch(`/buddies/${buddy.id}`, {
     method: "Delete"
   }).then((r) => {
     if (r.ok) {
-    filterBuddyList(e.target.parentNode.parentNode.id)
+    filterBuddyList(buddy.id)
   }})
   
-  // console.log(e.target.parentNode.parentNode.id)
+  console.log(buddy)
 }
 
 function viewProspects(){

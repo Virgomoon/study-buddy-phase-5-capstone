@@ -15,7 +15,7 @@ import uuid from 'react-uuid';
 
 function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyList, updateBuddyList}) {
 
-  const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
 
   // const [potentialBuddies, setPotentialBuddies] = useState([])
 
@@ -34,45 +34,55 @@ function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyLis
     
     //   }, []);
 
-    function resetPotentials(id) {
+    // function resetPotentials(id) {
 
-      const toDisplay = Object.values(potentialBuddies).filter((buddy) => { if(buddy.id !== id) return true; })
+    //   const toDisplay = Object.values(potentialBuddies).filter((buddy) => { if(buddy.id !== id) return true; })
 
-      return toDisplay;
-    }
+    //   return toDisplay;
+    // }
 
-    if (potentialBuddies){
+    // if (potentialBuddies){
 
-      potentialBuddies.map(user => {console.log(user.username)
-        console.log(user.id)})
-      }
+    //   potentialBuddies.map(user => {console.log(user.username)
+    //     console.log(user.id)})
+    //   }
     // console.log(potentialBuddies.filter(buddy => buddy.id !== 2))
 
-   async function handleAddBuddy(e){
+   async function handleAddBuddy(e, buddy){
+ 
+      console.log(buddy)
 
-      const buddyObj = {
+      const buddyOBJ = {
         user_id: currentUser.id,
-        buddy_id: e.target.parentNode.parentNode.id
+        buddy_id: buddy.id
       }
-      console.log(buddyObj)
 
-      // await fetch("/buddies", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(buddyObj),
-      // }).then((r) => {
-      //    r.json()
-      //    .then((buddy) => {
-      //       updateBuddyList(buddy)
-      //     })
+      const buddyCopy = JSON.parse(JSON.stringify(potentialBuddies))
+      const filtered =  buddyCopy.filter((bud) => {
+        return bud.id !== buddy.id 
+      })
+      setPotentialBuddies(filtered)
+      
+      console.log(buddyOBJ)
+      await fetch("/buddies", {
+
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(buddyOBJ),
+      }).then((r) => {
+         r.json()
+         .then((buddy) => {
+            updateBuddyList(buddy)
+          })
           // console.log(buddy)
           
         // console.log(resetPotentials(e.target.parentNode.parentNode.id))
-      //   const n = resetPotentials(e.target.parentNode.parentNode.id)
-      //   setPotentialBuddies(n)
-      // })
+        // const int = parseInt(e.target.parentNode.parentNode.id)
+        // const resetP = resetPotentials(int)
+        // setPotentialBuddies(resetP)
+      })
       // console.log(potentialBuddies)
 
     }
@@ -85,11 +95,11 @@ function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyLis
           <div key={uuid()}>
           <Paper id={buddy.id} >
           <div>{buddy.username}</div>
-          <div>{buddy.first_ame}</div>
+          <div>{buddy.first_name}</div>
           <div>{buddy.last_name}</div>
           <div>{buddy.email}</div>
           
-          <Button variant='contained'onClick={handleAddBuddy}> <AddIcon /> </Button>
+          <Button variant='contained'onClick={(e)=> handleAddBuddy(e, buddy)}> <AddIcon /> </Button>
           </Paper>
           </div>
           

@@ -38,7 +38,7 @@ function ViewBuddies({myBuddies, onDeleteBuddy}) {
             <h4>{buddy.buddy.first_name}</h4>
             <h4>{buddy.buddy.last_name}</h4>
             <h4>{buddy.buddy.email}</h4>
-            <Button variant='contained' onClick={onDeleteBuddy}><RemoveIcon /></Button>
+            <Button variant='contained' onClick={(e)=> onDeleteBuddy(e, buddy)}><RemoveIcon /></Button>
             <Button variant='outlined' onClick={handleClick}>Buddy Notes</Button>  
           </Paper>
         </div>

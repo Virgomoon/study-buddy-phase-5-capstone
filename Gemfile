@@ -50,3 +50,5 @@ gem "byebug", "~> 11.1"
 
 gem "faker", "~> 2.23"
 
+
+gem "awesome_print", "~> 1.9"
