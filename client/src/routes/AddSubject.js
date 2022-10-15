@@ -26,7 +26,7 @@ function AddSubject() {
     )    
 
   return (
-    <>
+    <div className='subjects'>
     <div className='head'>
         <FetchUserDetails />
         <NavBar />
@@ -35,7 +35,7 @@ function AddSubject() {
     <div>AddSubject</div>
     <SubjectAdd />
     {displaySubjects}
-    </>
+    </div>
   )
 }
 

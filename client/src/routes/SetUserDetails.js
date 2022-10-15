@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import '../App.css';
+import '../CSS/home.css'
 
 export default function SetUserDetails() {
     const [username, setUserName] = useState("")
@@ -14,25 +15,27 @@ export default function SetUserDetails() {
     
     const navigate = useNavigate()
     
-    
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
+       try {
       e.preventDefault();
-      
-      await fetch("/login", {
+      const response = await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setCurrentUser(user));
-          navigate('/')
-        }
       })
+      
+      const user = await response.json()
+      setCurrentUser(user)
+      navigate('/')
+    } catch (error){
+      console.log(error)
     }
-    
-    return (<>
+  }
+
+    return (
+    <div className='sign-in'>
 
       <h1 className="heading"> Welcome, to Studdy Buddy!</h1>
       <h2>Login to your Account</h2>
@@ -67,6 +70,6 @@ export default function SetUserDetails() {
 
     <Button onClick={() => navigate('/usersignup')}>Create Account</Button>
 
-    </>)
+    </div>)
 
 }

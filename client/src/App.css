@@ -7,6 +7,10 @@
   grid-template-rows:  [row1-start] 20% [row1-end] auto [third-line] 20% [last-line];;
 }
 
+.homepage {
+  grid-row: row1-end / last-line
+}
+
 .head{
   grid-column: first / line2;
   grid-row: row1-start / row1-end;

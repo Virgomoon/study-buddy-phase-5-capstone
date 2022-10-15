@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import EditUserDetails from './EditUserDetails';
 import { useNavigate } from "react-router-dom";
 import '../App.css';
+import '../CSS/home.css'
 
 export default function BasicCard() {
 
@@ -35,7 +36,7 @@ export default function BasicCard() {
     }
     
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275 }} className='basicCard'>
       <CardContent>
         {isEditing ? (<EditUserDetails
           setIsEditing={setIsEditing}
@@ -69,7 +70,7 @@ export default function BasicCard() {
         )}
         
       </CardContent>
-      <CardActions>
+      <CardActions className='button'>
         <Button variant='contained' 
         size="small"
         onClick={deleteUser}

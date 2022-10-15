@@ -69,7 +69,7 @@ function Login() {
   const subjectFilter = (
     <div className='header'>
     <div className='title-container'>
-        <div className='title'>Subject</div>
+        {/* <div className='title'>Subject</div> */}
     </div>
     <div className='select-container'>
         <label>Select Subject</label>
@@ -86,7 +86,7 @@ function Login() {
   setAddingSubject={setAddingSubject} /> : null
 
   return (
-    <>
+    <div className='make-note'>
     <div className='head'>
         <FetchUserDetails />
         <NavBar />
@@ -126,7 +126,7 @@ function Login() {
 
         <Button type='submit' variant='contained' onClick={handleSubmit}>Submit</Button>
         </Box>
-    </>
+    </div>
   )
 }
 

@@ -94,7 +94,7 @@ function viewProspects(){
     }
 
   return (
-    <>
+    <div className='buddies'>
     <div className='head'>
         <FetchUserDetails />
         <NavBar />
@@ -109,7 +109,7 @@ function viewProspects(){
     { showBuddies? (<ViewBuddies myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
     { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} setMyBuddies={setMyBuddies} getBuddies={getBuddies}/> ) : null}
     </Box>
-    </>
+    </div>
   )
 }
 

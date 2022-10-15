@@ -60,14 +60,14 @@ function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, se
     const findBuds = potentialBuddies.map((buddy) =>{
         return (
           <div key={uuid()}>
-          <Paper id={buddy.id} >
-          <div>{buddy.username}</div>
-          <div>{buddy.first_name}</div>
-          <div>{buddy.last_name}</div>
-          <div>{buddy.email}</div>
-          
-          <Button variant='contained'onClick={(e)=> handleAddBuddy(e, buddy)}> <AddIcon /> </Button>
-          </Paper>
+            <Paper id={buddy.id} >
+            <div>{buddy.username}</div>
+            <div>{buddy.first_name}</div>
+            <div>{buddy.last_name}</div>
+            <div>{buddy.email}</div>
+            
+            <Button variant='contained'onClick={(e)=> handleAddBuddy(e, buddy)}> <AddIcon /> </Button>
+            </Paper>
           </div>
           
           )})

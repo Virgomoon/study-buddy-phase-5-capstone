@@ -58,7 +58,7 @@ function ViewNotes() {
   const subjectFilter = (
   <div className='header'>
   <div className='title-container'>
-      <div className='title'>Subject</div>
+      {/* <div className='title'>Subject</div> */}
   </div>
   <div className='select-container'>
       <label>Select Subject</label>
@@ -92,10 +92,12 @@ const displayNotes = filteredNotes.map((note)=> {
         <FetchUserDetails />
         <NavBar />
         <Header />
-      </div>
-    <div>ViewNotes</div>
-    {subjectFilter}
-    {displayNotes}
+    </div>
+    <div className='notes'>
+      <div>Your Notes</div>
+      {subjectFilter}
+      {displayNotes}
+    </div>
     
     </>
   )

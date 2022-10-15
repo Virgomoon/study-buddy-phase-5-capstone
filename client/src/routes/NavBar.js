@@ -24,6 +24,7 @@ function LinkTab(props) {
       onClick={(event) => {
         event.preventDefault();
         navigate(props.href)
+        // setValue(props.index)
       }}
       {...props}
     />
@@ -31,13 +32,14 @@ function LinkTab(props) {
 }
 // const routeList = ["/", "/new", "/add_note", "/mybuddies", "/add_subject" ]
 
-const [tab, setTab] = useState("/");
+const [value, setValue] = useState(0);
 
 
 const handleChange = (event, newValue) => {
-  setTab(newValue)
+  setValue(newValue)
 }
 
+console.log(value)
 // const handleCallToRouter = (value) => {
 //   // setTab(value)
 //   return navigate(value);
@@ -54,17 +56,17 @@ const handleChange = (event, newValue) => {
     <div className='navteam' id='two'>
       <Box sx={{ width: '100%' }}>
       <Tabs
-        value={tab}
-        onChange={(event, value) => {handleChange(event, value)}}
+        value={value}
+        onChange={handleChange}
         aria-label="nav tabs example"
         // indicatorColor="secondary"
         // aria-label="secondary tabs example"
       >
-        <LinkTab label="Home" href="/" />
-        <LinkTab label="Notes" href="/new"  />
-        <LinkTab label="New Note" href="/add_note"  />
-        <LinkTab label="Buddies" href="/mybuddies"  />
-        <LinkTab label="Add Subject" href="/add_subject"  />
+        <LinkTab label="Home" value={0} href="/" />
+        <LinkTab label="Notes" value={1} href="/new"  />
+        <LinkTab label="New Note" value={2} href="/add_note" />
+        <LinkTab label="Buddies" value={3} href="/mybuddies" />
+        <LinkTab label="Add Subject" value={4} href="/add_subject" />
       </Tabs>
     </Box>
       {/* <List sx={style} component="nav" aria-label="mailbox folders">
