@@ -33,24 +33,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  
-  // const navigate = useNavigate()
-
-  
-  // const { setUsername } = useContext(UserContext)
-  // useEffect(() => {
-  //   // auto-login
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setCurrentUser(user));
-  //     }  
-        
-      
-  //   });
-  
-  // }, []);
-
-  
 
   return (
     <UserProvider>

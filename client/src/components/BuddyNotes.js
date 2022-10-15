@@ -1,23 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/userDetails'
-import { Navigate, useNavigate } from "react-router-dom";
-import NavBar from '../routes/NavBar';
-import FetchUserDetails from './FetchUserDetails';
-import Header from './Header';
+import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import NoteCard from './NoteCard';
-import ViewBuddies from './ViewBuddies';
-import AddBuddies from './AddBuddies';
 import Paper from '@mui/material/Paper';
 import uuid from 'react-uuid';
+import '../App.css';
 
 function BuddyNotes({setShowBuddyNotes, clickedId}) {
 
   const [listBuddyNotes, setListBuddyNotes] = useState([])
   const [notesExist, setNotesExist] = useState(false)
-  // const navigate = useNavigate();
+  
   
   async function getBuddyNotes(){
     

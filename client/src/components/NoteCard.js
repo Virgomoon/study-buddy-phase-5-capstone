@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import EditNote from './EditNote';
+import '../App.css';
 
 function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
   const [isEditingNote, setIsEditingNote] = useState(false);
@@ -17,8 +18,6 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
     onDeleteNote(id);
     }})
     }
-  
-    // console.log(title)
     
     return (
       <div>
@@ -32,7 +31,6 @@ function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
       <div key={id} id={id}  >
       <h2>{title}</h2>
       <p>{entry}</p>
-      {/* <span>Buddies: {note.users.length} </span> */}
       <button onClick={() => setIsEditingNote((isEditingNote) => !isEditingNote)}>
       <span role="img" aria-label="edit">
       ✏️

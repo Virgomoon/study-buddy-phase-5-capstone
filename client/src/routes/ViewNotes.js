@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
+import '../App.css';
 import FetchUserDetails from '../components/FetchUserDetails';
 // import EditNote from '../components/EditNote';
 import NoteCard from '../components/NoteCard';
@@ -15,29 +16,11 @@ function ViewNotes() {
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
   const [subjectArr, setSubArr] = useState(Object.values(subjectList))
-  
-
-  async function getSubjects(){
-    
-    const r = await fetch("/subjects");
-    const data = await r.json();
-    return data;
-  }
-
-  useEffect(() => {
-      getSubjects().then(function(result) {
-        setSubjectList(result);
-    });
-    
-  }, []);
-
-  // console.log(subjectList)
 
   useEffect(() => {
     setSubArr(Object.values(subjectList))
   
   }, [subjectList]);
-  // console.log(subjectArr)
 
   async function getNotes(){
     
@@ -52,7 +35,6 @@ function ViewNotes() {
         setUserNotes(result);
     });
   }, []);
-  // console.log(userNotes)
 
   function handleDeleteNote(id) {
     const updatedNotes = userNotes.filter((note) =>{ 
@@ -72,9 +54,6 @@ function ViewNotes() {
     setUserNotes(updatedNotes);
   }
 
-  // console.log(subjectList)
-  // console.log(subjectArr)
-
   const subjectFilter = (
   <div className='header'>
   <div className='title-container'>
@@ -92,8 +71,6 @@ function ViewNotes() {
 
 const filteredNotes = userNotes.filter((note) => note.subject.title  ===  selectedSubject);
 
-// onClick={renderSeries}
-
 const displayNotes = filteredNotes.map((note)=> {
   return(
     
@@ -107,8 +84,6 @@ const displayNotes = filteredNotes.map((note)=> {
         
     )
   })
-
-// console.log(selectedSubject)
 
   return (
     <>

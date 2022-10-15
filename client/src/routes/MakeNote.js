@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SubjectAdd from '../components/SubjectAdd';
+import '../App.css';
 
 
 function Login() {
@@ -20,9 +21,6 @@ function Login() {
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ addingSubject, setAddingSubject ] = useState(false)
   const [subjectArr, setSubArr] = useState(Object.values(subjectList))
-  // console.log(subjectArr)
-
-  
   
   async function handleSubmit(e) {
       e.preventDefault();

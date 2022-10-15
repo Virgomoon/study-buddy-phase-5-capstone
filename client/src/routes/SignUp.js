@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import '../App.css';
 
 function SignUp() {
 
@@ -15,14 +16,6 @@ function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
-  
-
-  // function handleChange(e) {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // }
 
   function handleAddUser(e){
     e.preventDefault()

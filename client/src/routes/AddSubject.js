@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import SubjectAdd from '../components/SubjectAdd';
+import '../App.css';
 // import Box from '@mui/material/Box';
 // import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
@@ -16,9 +17,6 @@ function AddSubject() {
 
     const { subjectList, setSubjectList } = useContext(SubjectContext)
     const [subjectArr, setSubArr] = useState(Object.values(subjectList))
-
-    console.log(subjectArr)
-    // subjectArr.map(s => console.log(s))
 
     const displaySubjects = subjectArr.map((sub) => (
 

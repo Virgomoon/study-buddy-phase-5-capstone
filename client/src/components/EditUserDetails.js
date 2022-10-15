@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/userDetails';
+import '../App.css';
 
 function EditUserDetails({setIsEditing}) {
 
@@ -26,7 +27,6 @@ function EditUserDetails({setIsEditing}) {
         })
           .then((r) => r.json())
           .then((updatedUser) => console.log(updatedUser));
-        //   .then((updatedUser) => setCurrentUser(updatedUser));
   
           setIsEditing(false)
       }

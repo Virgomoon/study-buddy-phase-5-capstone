@@ -2,8 +2,9 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-// import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import '../styles.css'
+import '../App.css';
 
 const style = {
   width: '100%',
@@ -16,7 +17,7 @@ function NavBar() {
 
   return (
     
-    <div>
+    <div className='nav'>
       <List sx={style} component="nav" aria-label="mailbox folders">
         <ListItem button>
           <NavLink to="/">Home</NavLink>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../App.css';
 
 function EditNote({id, entry, setIsEditingNote, onUpdateNote}) {
 

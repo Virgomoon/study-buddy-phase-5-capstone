@@ -1,11 +1,15 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../context/userDetails'
-// import { Navigate, useNavigate } from "react-router-dom";
+import React, { useContext } from 'react';
+import { UserContext } from '../context/userDetails';
+import '../styles.css';
+import '../App.css';
 
 export default function FetchUserDetails() {
 
     const { currentUser } = useContext(UserContext)
-    return <>
-        {currentUser ? `Welcome ${currentUser.username}` : null}
-    </>
+    return (
+
+        <div className='userDetails'>
+            {currentUser ? `Welcome ${currentUser.username}` : null}
+        </div>
+        )
 }

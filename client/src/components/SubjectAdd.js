@@ -1,5 +1,6 @@
-import React, {useState, useContext} from 'react'
-import { SubjectContext } from '../context/subjectList'
+import React, {useState, useContext} from 'react';
+import { SubjectContext } from '../context/subjectList';
+import '../App.css';
 
 function SubjectAdd({setAddingSubject}) {
 
@@ -7,7 +8,7 @@ function SubjectAdd({setAddingSubject}) {
 
     const {subjectlist, setSubjectList} = useContext(SubjectContext)
 
-    console.log(subjectlist)
+    // console.log(subjectlist)
 
     function handleAddSubject(e){
         e.preventDefault()

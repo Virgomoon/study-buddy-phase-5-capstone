@@ -12,41 +12,11 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Paper from '@mui/material/Paper';
 import uuid from 'react-uuid';
+import '../App.css';
 
-function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyList, updateBuddyList}) {
+function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, getBuddies}) {
 
   const { currentUser } = useContext(UserContext)
-
-  // const [potentialBuddies, setPotentialBuddies] = useState([])
-
-    //  const getProspects = async () =>{
-    
-    //     let response = await fetch('/users').then((r) =>{
-    //        r.json();
-    //     })
-    //     console.log(response)
-    //     setPotentialBuddies(response);
-    //   }
-    
-    //   useEffect(() => {
-        
-    //     getProspects();
-    
-    //   }, []);
-
-    // function resetPotentials(id) {
-
-    //   const toDisplay = Object.values(potentialBuddies).filter((buddy) => { if(buddy.id !== id) return true; })
-
-    //   return toDisplay;
-    // }
-
-    // if (potentialBuddies){
-
-    //   potentialBuddies.map(user => {console.log(user.username)
-    //     console.log(user.id)})
-    //   }
-    // console.log(potentialBuddies.filter(buddy => buddy.id !== 2))
 
    async function handleAddBuddy(e, buddy){
  
@@ -76,20 +46,11 @@ function AddBuddies({myBuddies, potentialBuddies, setPotentialBuddies,  buddyLis
          .then((buddy) => {
             updateBuddyList(buddy)
           })
-          // console.log(buddy)
-          
-        // console.log(resetPotentials(e.target.parentNode.parentNode.id))
-        // const int = parseInt(e.target.parentNode.parentNode.id)
-        // const resetP = resetPotentials(int)
-        // setPotentialBuddies(resetP)
       })
-      // console.log(potentialBuddies)
-
+  
     }
+    
 
-    // myBuddies.map(buddy => console.log(buddy.username))
-    // const { first_name, last_name, username, email } = myBuddies
-    // console.log(first_name)
     const findBuds = potentialBuddies.map((buddy) =>{
         return (
           <div key={uuid()}>

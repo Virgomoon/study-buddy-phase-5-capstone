@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ViewBuddies from '../components/ViewBuddies';
 import AddBuddies from '../components/AddBuddies';
+import '../App.css';
 // import AddIcon from '@mui/icons-material/Add';
 
 
@@ -26,7 +27,7 @@ function Buddies() {
     
         const response = await fetch('/users');
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         setPotentialBuddies(data);
         return data
       }
@@ -41,7 +42,7 @@ function Buddies() {
     
     const r = await fetch("/buddies");
     const data = await r.json();
-    console.log(data)
+    // console.log(data)
     setMyBuddies(data);
     return data;
   }
@@ -68,15 +69,15 @@ function viewBuddies(){
 
 function deleteBuddies(e, buddy){
   e.preventDefault()
-
+  
   fetch(`/buddies/${buddy.id}`, {
     method: "Delete"
   }).then((r) => {
     if (r.ok) {
+    }})
     filterBuddyList(buddy.id)
-  }})
   
-  console.log(buddy)
+  // console.log(buddy)
 }
 
 function viewProspects(){
@@ -91,8 +92,6 @@ function viewProspects(){
     setMyBuddies(newList)
     }
 
-  // console.log(myBuddies)
-  //   console.log(id)
   return (
     <>
     <Header />
@@ -105,7 +104,7 @@ function viewProspects(){
       <Button variant='contained'
       onClick={viewProspects}>Add Buddies</Button>
     { showBuddies? (<ViewBuddies myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
-    { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} />) : null}
+    { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} getBuddies={getBuddies}/> ) : null}
     </Box>
     </>
   )

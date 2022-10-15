@@ -5,6 +5,8 @@ import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import BasicCard from '../components/BasicCard';
+import '../styles.css';
+import '../App.css';
 
 
 
@@ -13,14 +15,7 @@ function HomePage() {
     const navigate = useNavigate()
     const { currentUser, setCurrentUser, currentUserRef } = useContext(UserContext)
 
-    
-    
-    
-
       const showCard = currentUser ? <BasicCard /> : null
-
-      // const navto = !currentUser ? navigate("/userlogin") : null
-
 
   return (
     <>
