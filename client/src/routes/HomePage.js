@@ -19,7 +19,7 @@ function HomePage() {
 
     console.log(currentUser)
 
-    const isLoggedin = currentUser === null ? true : false
+    const isLoggedin = currentUser.username ? true : false
 
     console.log(isLoggedin)
 

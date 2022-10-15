@@ -8,11 +8,7 @@ const UserProvider = (props) => {
 
     const getCurrentUser = async () => {
         let response = await fetch("/me").then((r) => r.json());
-        if (response.ok){
-            setCurrentUser(response);
-        } else {
-            return null
-        }
+        setCurrentUser(response); 
       };
     
       useEffect(() => {
