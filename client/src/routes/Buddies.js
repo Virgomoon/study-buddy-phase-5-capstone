@@ -52,7 +52,7 @@ function Buddies() {
     
     getBuddies()
 
-}, []);
+}, [setMyBuddies]);
 
 function updateBuddyList(newBud) {
   if(myBuddies.find((data) => data.id === newBud.id)) {
@@ -107,7 +107,7 @@ function viewProspects(){
       <Button variant='contained'
       onClick={viewProspects}>Add Buddies</Button>
     { showBuddies? (<ViewBuddies myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
-    { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} getBuddies={getBuddies}/> ) : null}
+    { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} setMyBuddies={setMyBuddies} getBuddies={getBuddies}/> ) : null}
     </Box>
     </>
   )

@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 import uuid from 'react-uuid';
 import '../App.css';
 
-function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, getBuddies}) {
+function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, setMyBuddies, getBuddies}) {
 
   const { currentUser } = useContext(UserContext)
 
@@ -44,11 +44,17 @@ function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, ge
       }).then((r) => {
          r.json()
          .then((buddy) => {
-            updateBuddyList(buddy)
+            console.log(buddy)
           })
       })
-  
+
     }
+
+    useEffect(()=>{
+      fetch("/buddies")
+      .then((res)=> res.json())
+      .then((data)=> setMyBuddies(data))
+    },[setMyBuddies]);
     
 
     const findBuds = potentialBuddies.map((buddy) =>{

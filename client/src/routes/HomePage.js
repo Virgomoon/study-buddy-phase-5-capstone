@@ -17,11 +17,11 @@ function HomePage() {
     const navigate = useNavigate()
     const { currentUser } = useContext(UserContext)
 
-    console.log(currentUser)
+    // console.log(currentUser)
 
     const isLoggedin = currentUser.username ? true : false
 
-    console.log(isLoggedin)
+    // console.log(isLoggedin)
 
     if (!isLoggedin) return navigate("/userlogin");
 
