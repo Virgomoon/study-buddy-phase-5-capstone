@@ -20,7 +20,7 @@ function Header() {
       }
     
       return (
-        <Box className="header">
+        <Box className="navteam" id='three'>
         <nav >
                     <h3> 
                       Study Buddy

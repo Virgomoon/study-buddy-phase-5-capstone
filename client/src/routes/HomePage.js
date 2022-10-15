@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import BasicCard from '../components/BasicCard';
 import '../styles.css';
 import '../App.css';
+import '../CSS/home.css'
 
 
 
@@ -18,13 +19,17 @@ function HomePage() {
       const showCard = currentUser ? <BasicCard /> : null
 
   return (
-    <>
-    <Header />
-    <FetchUserDetails />
-    <NavBar />
-    <h3>Profile Details</h3>
-    {showCard}
-    </>
+    <div className='homepage'>
+      <div className='head'>
+        <FetchUserDetails />
+        <NavBar />
+        <Header />
+      </div>
+      <div className='main'>
+        <h3>Profile Details</h3>
+        {showCard}
+      </div>
+    </div>
   )
 }
 

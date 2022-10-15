@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SubjectAdd from '../components/SubjectAdd';
 import '../App.css';
+import '../CSS/home.css'
 
 
 function Login() {
@@ -86,11 +87,13 @@ function Login() {
 
   return (
     <>
-    <Header />
-    <div>Make Note</div>
-    <NavBar />
-    <FetchUserDetails />
+    <div className='head'>
+        <FetchUserDetails />
+        <NavBar />
+        <Header />
+      </div>
 
+    <div>Make Note</div>
     {/* <Button variant='outlined'
     onClick={() => setAddingSubject((addingSubject) => !addingSubject)}>Add Subject</Button>
     {displaySubjectAdd} */}

@@ -11,6 +11,7 @@ import SignUp from "./routes/SignUp";
 import ViewNotes from "./routes/ViewNotes";
 import AddSubject from "./routes/AddSubject";
 import './App.css';
+import './CSS/home.css'
 import NavBar from "./routes/NavBar";
 import { useContext, useEffect } from 'react'
 import { UserContext } from './context/userDetails'

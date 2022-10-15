@@ -8,6 +8,7 @@ import FetchUserDetails from '../components/FetchUserDetails';
 import NoteCard from '../components/NoteCard';
 // import {Navigate} from 'react-router-dom'
 import Header from '../components/Header';
+import '../CSS/home.css'
 
 function ViewNotes() {
 
@@ -87,10 +88,12 @@ const displayNotes = filteredNotes.map((note)=> {
 
   return (
     <>
-    <Header />
+    <div className='head'>
+        <FetchUserDetails />
+        <NavBar />
+        <Header />
+      </div>
     <div>ViewNotes</div>
-    <NavBar />
-    <FetchUserDetails />
     {subjectFilter}
     {displayNotes}
     

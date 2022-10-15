@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import ViewBuddies from '../components/ViewBuddies';
 import AddBuddies from '../components/AddBuddies';
 import '../App.css';
+import '../CSS/home.css'
 // import AddIcon from '@mui/icons-material/Add';
 
 
@@ -94,10 +95,12 @@ function viewProspects(){
 
   return (
     <>
-    <Header />
+    <div className='head'>
+        <FetchUserDetails />
+        <NavBar />
+        <Header />
+      </div>
     <div>Buddies</div>
-    <NavBar />
-    <FetchUserDetails />
     <Box>
       <Button variant='outlined'
       onClick={viewBuddies}>See Buddies</Button>

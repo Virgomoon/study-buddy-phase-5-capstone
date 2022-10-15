@@ -1,0 +1,43 @@
+.homepage {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+/* 
+    grid-template-columns:[first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+
+    grid-template-rows:  [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+
+    min-height: 70vh; */
+}
+
+/* .main {
+
+} */
+
+.head {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+
+    /* grid-column: first / end;
+    grid-row: row1-start / row1-end; */
+    
+}
+
+
+.navteam{
+    margin: auto;
+}
+
+.one{
+    flex-grow: 1;
+}
+
+.two{
+    flex-grow: 1;
+}
+
+.three{
+    flex-grow: 1;
+}

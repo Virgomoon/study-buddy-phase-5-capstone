@@ -7,6 +7,7 @@ import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import SubjectAdd from '../components/SubjectAdd';
 import '../App.css';
+import '../CSS/home.css'
 // import Box from '@mui/material/Box';
 // import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
@@ -26,9 +27,11 @@ function AddSubject() {
 
   return (
     <>
-    <Header />
-    <FetchUserDetails />
-    <NavBar />
+    <div className='head'>
+        <FetchUserDetails />
+        <NavBar />
+        <Header />
+    </div>
     <div>AddSubject</div>
     <SubjectAdd />
     {displaySubjects}

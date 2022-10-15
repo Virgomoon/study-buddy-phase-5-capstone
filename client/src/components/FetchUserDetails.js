@@ -8,7 +8,7 @@ export default function FetchUserDetails() {
     const { currentUser } = useContext(UserContext)
     return (
 
-        <div className='userDetails'>
+        <div className='navteam' id='one'>
             {currentUser ? `Welcome ${currentUser.username}` : null}
         </div>
         )

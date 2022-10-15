@@ -17,7 +17,7 @@ function NavBar() {
 
   return (
     
-    <div className='nav'>
+    <div className='navteam' id='two'>
       <List sx={style} component="nav" aria-label="mailbox folders">
         <ListItem button>
           <NavLink to="/">Home</NavLink>
