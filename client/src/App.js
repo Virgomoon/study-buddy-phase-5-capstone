@@ -13,6 +13,7 @@ import AddSubject from "./routes/AddSubject";
 import './App.css';
 import './CSS/home.css'
 import NavBar from "./routes/NavBar";
+import { redirect } from "react-router-dom";
 import { useContext, useEffect } from 'react'
 import { UserContext } from './context/userDetails'
 import { useNavigate } from "react-router-dom";
