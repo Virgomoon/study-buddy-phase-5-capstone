@@ -13,7 +13,7 @@ import '../App.css';
 import '../CSS/home.css'
 
 
-function Login() {
+function MakeNote() {
 
   const [title, setTitle] = useState("")
   const [entry, setEntry] = useState("")
@@ -22,6 +22,11 @@ function Login() {
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ addingSubject, setAddingSubject ] = useState(false)
   const [subjectArr, setSubArr] = useState(Object.values(subjectList))
+
+  useEffect(() => {
+    setSubArr(Object.values(subjectList))
+  
+  }, [subjectList]);
   
   async function handleSubmit(e) {
       e.preventDefault();
@@ -32,6 +37,8 @@ function Login() {
         title: title, 
         entry: entry
       })
+
+      // console.log(subjectList)
       
       await fetch("/notes", {
         method: "POST",
@@ -130,4 +137,4 @@ function Login() {
   )
 }
 
-export default Login
+export default MakeNote

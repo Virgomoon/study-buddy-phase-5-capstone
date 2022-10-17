@@ -23,6 +23,8 @@ function ViewNotes() {
   
   }, [subjectList]);
 
+  // console.log(subjectList)
+
   async function getNotes(){
     
     const r = await fetch('/mynotes');

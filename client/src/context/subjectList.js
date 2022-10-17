@@ -8,15 +8,13 @@ const SubjectProvider = (props) => {
 
     async function getSubjects(){
     
-        const r = await fetch("/subjects");
-        const data = await r.json();
-        return data;
+        const res = await fetch("/subjects").then((r) => r.json());
+        // const data = await r.json();
+        setSubjectList(res);
       }
     
       useEffect(() => {
-          getSubjects().then(function(result) {
-            setSubjectList(result);
-        });
+          getSubjects()
         
       }, []);
 

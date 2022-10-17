@@ -19,6 +19,12 @@ function AddSubject() {
     const { subjectList, setSubjectList } = useContext(SubjectContext)
     const [subjectArr, setSubArr] = useState(Object.values(subjectList))
 
+    // console.log(subjectList)
+    useEffect(() => {
+      setSubArr(Object.values(subjectList))
+    
+    }, [subjectList]);
+
     const displaySubjects = subjectArr.map((sub) => (
 
         <h5 key={sub.id}>{sub.title}</h5>
