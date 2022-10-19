@@ -44,17 +44,17 @@ function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, se
       }).then((r) => {
          r.json()
          .then((buddy) => {
-            console.log(buddy)
-          })
-      })
+          console.log(buddy)
+        })
+    })
 
-    }
+  }
 
-    useEffect(()=>{
-      fetch("/buddies")
-      .then((res)=> res.json())
-      .then((data)=> setMyBuddies(data))
-    },[setMyBuddies]);
+  useEffect(()=>{
+    fetch("/buddies")
+    .then((res)=> res.json())
+    .then((data)=> setMyBuddies(data))
+  },[setMyBuddies]);
     
 
     const findBuds = potentialBuddies.map((buddy) =>{

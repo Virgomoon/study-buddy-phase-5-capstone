@@ -22,8 +22,12 @@ function HomePage() {
     const isLoggedin = currentUser.username ? true : false
 
     // console.log(isLoggedin)
+    useEffect(() => {
+      
+      if (!isLoggedin) return navigate("/userlogin");
+    
+    }, []);
 
-    if (!isLoggedin) return navigate("/userlogin");
 
       const showCard = currentUser ? <BasicCard /> : null
 

@@ -23,7 +23,7 @@ function ViewNotes() {
   
   }, [subjectList]);
 
-  // console.log(subjectList)
+  console.log(subjectList)
 
   async function getNotes(){
     
@@ -65,9 +65,9 @@ function ViewNotes() {
   <div className='select-container'>
       <label>Select Subject</label>
       <select name="category" value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
-          { subjectArr[0] ? subjectArr.map((sub) => (
+          { subjectArr?.map((sub) => (
               <option key={sub.id} id={sub.id} value={sub.title}>{sub.title}</option>
-              )) : null}
+              )) }
       </select> 
   </div>
 </div>) 

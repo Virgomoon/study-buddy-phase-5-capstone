@@ -77,9 +77,10 @@ function deleteBuddies(e, buddy){
     if (r.ok) {
     }})
     filterBuddyList(buddy.id)
-  
   // console.log(buddy)
 }
+
+
 
 function viewProspects(){
   setSeeProspects(!seeProspects)
