@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/userDetails'
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,7 +11,7 @@ export default function SetUserDetails() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
     
-    const {  currentUser, setCurrentUser } = useContext(UserContext)
+    const {  setCurrentUser } = useContext(UserContext)
     
     const navigate = useNavigate()
     
@@ -27,7 +27,7 @@ export default function SetUserDetails() {
       })
       console.log(response.json)
       const result = await response.json().then((user) => setCurrentUser(user))
-      console.log(result)
+      // console.log(result)
       // console.log(user)
 
       navigate('/')

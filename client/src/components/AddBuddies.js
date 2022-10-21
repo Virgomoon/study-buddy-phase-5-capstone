@@ -2,19 +2,13 @@ import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../context/userDetails'
 import Box from '@mui/material/Box';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import EditUserDetails from './EditUserDetails';
-// import { useNavigate } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 import Paper from '@mui/material/Paper';
 import uuid from 'react-uuid';
 import '../App.css';
 
-function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, setMyBuddies, getBuddies}) {
+function AddBuddies({ potentialBuddies, setPotentialBuddies, setMyBuddies}) {
 
   const { currentUser } = useContext(UserContext)
   const [buttonClicked, setButtonclicked] = useState(false)

@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
-// import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
@@ -37,8 +36,6 @@ function MakeNote() {
         title: title, 
         entry: entry
       })
-
-      // console.log(subjectList)
       
       await fetch("/notes", {
         method: "POST",
@@ -54,29 +51,13 @@ function MakeNote() {
       setTitle("")
       setEntry("")
     }
-    
-    // function subject() {
-    //   let foundSub = setSubjectList.find(Subject => {
-    //     Subject.title === selectedSubject
-    //   })
-    //   return foundSub
-    // }
-
-    // let subject
-
-    // useEffect(() => {
-      // subjectList.map((sub)=> console.log(sub))
       
       const subject = subjectArr.filter((sub)=> sub.title === selectedSubject)
-    // console.log(subject[0])
-      
-    // }, [subjectList]);
-    // console.log(subject[0].id)
+  
     
   const subjectFilter = (
     <div className='header'>
     <div className='title-container'>
-        {/* <div className='title'>Subject</div> */}
     </div>
     <div className='select-container'>
         <label>Select Subject</label>
@@ -101,9 +82,6 @@ function MakeNote() {
       </div>
 
     <div>Make Note</div>
-    {/* <Button variant='outlined'
-    onClick={() => setAddingSubject((addingSubject) => !addingSubject)}>Add Subject</Button>
-    {displaySubjectAdd} */}
     <Box
       component="form"
       sx={{
@@ -125,7 +103,6 @@ function MakeNote() {
           fullWidth
           id="outlined-textarea"
           label="Add Note"
-          // placeholder="New Note"
           value={entry}
           multiline
           onChange={(e) => setEntry(e.target.value)}

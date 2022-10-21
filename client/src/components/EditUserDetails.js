@@ -4,11 +4,10 @@ import '../App.css';
 
 function EditUserDetails({setIsEditing}) {
 
-    const { currentUser, setCurrentUser} = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
     const { id } = currentUser
 
      const [editedState, setEditedState] = useState(currentUser);
-    // const { username, first_name, last_name, email} = editedState
 
     console.log(editedState)
     console.log(id)
@@ -41,30 +40,7 @@ function EditUserDetails({setIsEditing}) {
           defaultValue={editedState.username}
           onChange={(e) => setEditedState(e.target.value)}
         />
-        {/* <label>First Name</label>
-        <input
-          type="text"
-          name="first_name"
-          autoComplete="off"
-          defaultValue={editedState.first_name}
-          onChange={(e) => setEditedState(e.target.value)}
-        />
-        <label>Last Name</label>
-        <input
-          type="text"
-          name="last_name"
-          autoComplete="off"
-          defaultValue={editedState.last_name}
-          onChange={(e) => setEditedState(e.target.value)}
-        />
-        <label>Email</label>
-        <input
-          type="text"
-          name="username"
-          autoComplete="off"
-          defaultValue={editedState.email}
-          onChange={(e) => setEditedState(e.target.value)}
-        /> */}
+       
       
         <input type="submit" value="Save" />
       </form>

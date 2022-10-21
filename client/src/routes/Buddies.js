@@ -1,22 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../context/userDetails'
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ViewBuddies from '../components/ViewBuddies';
 import AddBuddies from '../components/AddBuddies';
 import '../App.css';
 import '../CSS/home.css'
-// import AddIcon from '@mui/icons-material/Add';
+
 
 
 function Buddies() {
 
-  const { currentUser } = useContext(UserContext)
+  // const { currentUser } = useContext(UserContext)
   const [myBuddies, setMyBuddies] = useState([])
   const [potentialBuddies, setPotentialBuddies] = useState([])
   const [buddyDelete, setBuddyDelete] = useState(false)
@@ -29,7 +26,6 @@ function Buddies() {
     
         const response = await fetch('/users');
         const data = await response.json()
-        // console.log(data)
         setPotentialBuddies(data);
         return data
       }
@@ -44,18 +40,14 @@ function Buddies() {
     
     const r = await fetch("/buddies");
     const data = await r.json();
-    // console.log(data)
-    // setMyBuddies(data);
     return data;
   }
 
   useEffect(() => {
     
-    console.log(myBuddies)
     getBuddies().then(function(result) {
       setMyBuddies(result);
     });
-    console.log(myBuddies)
 
 }, [buddyDelete]);
 
@@ -85,7 +77,6 @@ function deleteBuddies(e, buddy){
     if (r.ok) {
     }})
     filterBuddyList(buddy.id)
-  // console.log(buddy)
 }
 
 

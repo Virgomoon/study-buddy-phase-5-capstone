@@ -15,11 +15,8 @@ function ViewBuddies({myBuddies, onDeleteBuddy}) {
 
   const handleClick = (e) => {
     setShowBuddyNotes((showBuddyNotes) => !showBuddyNotes);
-    // console.log(e.target.parentNode.id)
     setClickedId(e.target.parentNode.id)
   }
-
-    // myBuddies.map((buddy)=> {console.log(buddy)})
 
     const displayBuds = myBuddies.map((buddy) =>{
         return (

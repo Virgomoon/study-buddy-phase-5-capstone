@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../context/userDetails'
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -30,7 +29,7 @@ function SignUp() {
       password_confirmation: passwordConfirm
     })
 
-    console.log(e.target.value)
+    // console.log(e.target.value)
 
     fetch("/signup", {
       method: "POST",

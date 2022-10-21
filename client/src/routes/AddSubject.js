@@ -1,11 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
-// import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
-// import { Navigate, useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
-import SubjectAdd from './SubjectAdd';
 import '../App.css';
 import '../CSS/home.css'
 
@@ -14,9 +11,7 @@ function AddSubject() {
     const { subjectList, setSubjectList } = useContext(SubjectContext)
     const [subjectArr, setSubArr] = useState(Object.values(subjectList))
     const [newSubject, setNewSubject] = useState("")
-    const [subAdded, setSubAdded] = useState(false)
 
-    // console.log(subjectList)
     useEffect(() => {
       setSubArr(Object.values(subjectList))
     
@@ -38,10 +33,7 @@ function AddSubject() {
        },
        body: JSON.stringify({title: newSubject}),
      })
-    //  console.log(response.json)
      const result = await response.json().then((added) => setSubjectList([...subjectList, added]))
-     console.log(result)
-     // console.log(user)
 
      setNewSubject("")
      return result

@@ -1,19 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import '../App.css';
 import FetchUserDetails from '../components/FetchUserDetails';
-// import EditNote from '../components/EditNote';
 import NoteCard from '../components/NoteCard';
-// import {Navigate} from 'react-router-dom'
 import Header from '../components/Header';
 import '../CSS/home.css'
 
 function ViewNotes() {
 
-  const { currentUser } = useContext(UserContext)
-  const { subjectList, setSubjectList } = useContext(SubjectContext)
+  // const { currentUser } = useContext(UserContext)
+  const { subjectList } = useContext(SubjectContext)
   const [ selectedSubject, setSelectedSubject ] = useState("Math")
   const [ userNotes, setUserNotes] = useState([])
   const [subjectArr, setSubArr] = useState(Object.values(subjectList))
@@ -22,8 +19,6 @@ function ViewNotes() {
     setSubArr(Object.values(subjectList))
   
   }, [subjectList]);
-
-  console.log(subjectList)
 
   async function getNotes(){
     
@@ -60,7 +55,6 @@ function ViewNotes() {
   const subjectFilter = (
   <div className='header'>
   <div className='title-container'>
-      {/* <div className='title'>Subject</div> */}
   </div>
   <div className='select-container'>
       <label>Select Subject</label>

@@ -5,8 +5,6 @@ import '../App.css';
 function NoteCard({id, title, entry, onDeleteNote, onUpdateNote }) {
   const [isEditingNote, setIsEditingNote] = useState(false);
 
-  // console.log(id)
-
   function handleDeleteClick(e) {
     e.preventDefault();
 
