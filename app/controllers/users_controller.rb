@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
     def index
         users = @current_user.potential_buddies
-        render json: users
+        filter = users.select{ | user | user[:id] != @current_user.id}
+        render json: filter
     end
 
     def show

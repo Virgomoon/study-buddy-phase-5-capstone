@@ -26,8 +26,9 @@ export default function SetUserDetails() {
         body: JSON.stringify({ username, password }),
       })
       
-      const user = await response.json()
-      setCurrentUser(user)
+      await response.json().then((user) => setCurrentUser(user))
+      // console.log(user)
+
       navigate('/')
     } catch (error){
       console.log(error)
