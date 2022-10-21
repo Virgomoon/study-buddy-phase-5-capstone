@@ -17,10 +17,13 @@ import '../App.css';
 function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, setMyBuddies, getBuddies}) {
 
   const { currentUser } = useContext(UserContext)
+  const [buttonClicked, setButtonclicked] = useState(false)
 
    async function handleAddBuddy(e, buddy){
  
       console.log(buddy)
+
+      setButtonclicked(buttonClicked => !buttonClicked)
 
       const buddyOBJ = {
         user_id: currentUser.id,
@@ -54,7 +57,7 @@ function AddBuddies({ potentialBuddies, setPotentialBuddies, updateBuddyList, se
     fetch("/buddies")
     .then((res)=> res.json())
     .then((data)=> setMyBuddies(data))
-  },[setMyBuddies]);
+  },[buttonClicked]);
     
 
     const findBuds = potentialBuddies.map((buddy) =>{
