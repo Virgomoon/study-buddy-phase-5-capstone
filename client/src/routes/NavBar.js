@@ -32,6 +32,7 @@ const [value, setValue] = useState(0);
 
 const handleChange = (event, newValue) => {
   setValue(newValue)
+  console.log(newValue)
 }
 
   return (
@@ -45,11 +46,11 @@ const handleChange = (event, newValue) => {
         // indicatorColor="secondary"
         // aria-label="secondary tabs example"
       >
-        <LinkTab label="Home" href="/" />
-        <LinkTab label="Notes" href="/new"  />
-        <LinkTab label="New Note" href="/add_note" />
-        <LinkTab label="Buddies" href="/mybuddies" />
-        <LinkTab label="Add Subject" href="/add_subject" />
+        <LinkTab label="Home" href="/"/>
+        <LinkTab label="Notes" href="/new"/>
+        <LinkTab label="New Note" href="/add_note"/>
+        <LinkTab label="Buddies" href="/mybuddies"/>
+        <LinkTab label="Add Subject" href="/add_subject"/>
       </Tabs>
     </Box>
     </div>
