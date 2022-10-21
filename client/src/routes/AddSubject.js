@@ -5,19 +5,16 @@ import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
 import Header from '../components/Header';
-import SubjectAdd from '../components/SubjectAdd';
+import SubjectAdd from './SubjectAdd';
 import '../App.css';
 import '../CSS/home.css'
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import Button from '@mui/material/Button';
-// import ViewBuddies from '../components/ViewBuddies';
-// import AddBuddies from '../components/AddBuddies';
 
 function AddSubject() {
 
     const { subjectList, setSubjectList } = useContext(SubjectContext)
     const [subjectArr, setSubArr] = useState(Object.values(subjectList))
+    const [newSubject, setNewSubject] = useState("")
+    const [subAdded, setSubAdded] = useState(false)
 
     // console.log(subjectList)
     useEffect(() => {
@@ -31,6 +28,28 @@ function AddSubject() {
         )
     )    
 
+    const handleAddSubject = async (e) => {
+      try {
+     e.preventDefault();
+     const response = await fetch("/subjects", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({title: newSubject}),
+     })
+    //  console.log(response.json)
+     const result = await response.json().then((added) => setSubjectList([...subjectList, added]))
+     console.log(result)
+     // console.log(user)
+
+     setNewSubject("")
+     return result
+   } catch (error){
+     console.log(error)
+   }
+ }
+
   return (
     <div className='subjects'>
     <div className='head'>
@@ -39,7 +58,16 @@ function AddSubject() {
         <Header />
     </div>
     <div>AddSubject</div>
-    <SubjectAdd />
+    <form onSubmit={handleAddSubject}>
+    <input
+      type="text"
+      name="body"
+      autoComplete="off"
+      value={newSubject}
+      onChange={(e) => setNewSubject(e.target.value)}
+    />
+    <input type="submit" value="Save" />
+  </form>
     {displaySubjects}
     </div>
   )

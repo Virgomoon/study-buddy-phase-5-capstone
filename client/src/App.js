@@ -10,6 +10,7 @@ import MakeNote from "./routes/MakeNote";
 import SignUp from "./routes/SignUp";
 import ViewNotes from "./routes/ViewNotes";
 import AddSubject from "./routes/AddSubject";
+import SubjectAdd from "./routes/SubjectAdd";
 import './App.css';
 import './CSS/home.css'
 import NavBar from "./routes/NavBar";
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
   { path: "/mybuddies", element: <Buddies />},
   { path: "/nav", element: <NavBar />},
   { path: "/header", element: <Header />},
-  { path: "/add_subject", element: <AddSubject />}
+  { path: "/add_subject", element: <AddSubject />},
+  { path: "subject_add", element: <SubjectAdd /> }
 ]);
 
 function App() {

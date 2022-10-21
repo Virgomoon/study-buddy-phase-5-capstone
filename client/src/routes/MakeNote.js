@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import SubjectAdd from '../components/SubjectAdd';
+import SubjectAdd from './SubjectAdd';
 import '../App.css';
 import '../CSS/home.css'
 

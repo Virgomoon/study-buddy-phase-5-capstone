@@ -6,17 +6,13 @@ const SubjectContext = createContext();
 const SubjectProvider = (props) => {
     const [ subjectList, setSubjectList ] = useState([])
 
-    async function getSubjects(){
-    
-        const res = await fetch("/subjects").then((r) => r.json());
-        // const data = await r.json();
+     const getSubjects = async() => {
+        let res = await fetch("/subjects").then((r) => r.json());
         setSubjectList(res);
       }
     
       useEffect(() => {
           getSubjects()
-
-        
       }, []);
 
     const value = useMemo(
