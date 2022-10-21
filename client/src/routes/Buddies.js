@@ -45,13 +45,17 @@ function Buddies() {
     const r = await fetch("/buddies");
     const data = await r.json();
     // console.log(data)
-    setMyBuddies(data);
+    // setMyBuddies(data);
     return data;
   }
 
   useEffect(() => {
     
-    getBuddies()
+    console.log(myBuddies)
+    getBuddies().then(function(result) {
+      setMyBuddies(result);
+    });
+    console.log(myBuddies)
 
 }, [buddyDelete]);
 
@@ -73,6 +77,7 @@ function viewBuddies(){
 function deleteBuddies(e, buddy){
   e.preventDefault()
   setBuddyDelete((buddyDelete) => !buddyDelete)
+  console.log(buddyDelete)
   
   fetch(`/buddies/${buddy.id}`, {
     method: "Delete"
