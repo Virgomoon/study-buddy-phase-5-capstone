@@ -25,11 +25,13 @@ export default function SetUserDetails() {
         },
         body: JSON.stringify({ username, password }),
       })
-      
-      await response.json().then((user) => setCurrentUser(user))
+      console.log(response.json)
+      const result = await response.json().then((user) => setCurrentUser(user))
+      console.log(result)
       // console.log(user)
 
       navigate('/')
+      return result
     } catch (error){
       console.log(error)
     }
@@ -38,7 +40,7 @@ export default function SetUserDetails() {
     return (
     <div className='sign-in'>
 
-      <h1 className="heading"> Welcome, to Studdy Buddy!</h1>
+      <h1 className="heading"> Welcome, to Study Buddy!</h1>
       <h2>Login to your Account</h2>
 
     <Box component="form"
