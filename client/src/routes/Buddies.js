@@ -19,6 +19,7 @@ function Buddies() {
   const { currentUser } = useContext(UserContext)
   const [myBuddies, setMyBuddies] = useState([])
   const [potentialBuddies, setPotentialBuddies] = useState([])
+  const [buddyDelete, setBuddyDelete] = useState(false)
   
   const [showBuddies, setShowBuddies] = useState(false);
   const [seeProspects, setSeeProspects] = useState(false)
@@ -52,7 +53,8 @@ function Buddies() {
     
     getBuddies()
 
-}, [setMyBuddies]);
+}, [buddyDelete]);
+
 
 function updateBuddyList(newBud) {
   if(myBuddies.find((data) => data.id === newBud.id)) {
@@ -70,6 +72,7 @@ function viewBuddies(){
 
 function deleteBuddies(e, buddy){
   e.preventDefault()
+  setBuddyDelete((buddyDelete) => !buddyDelete)
   
   fetch(`/buddies/${buddy.id}`, {
     method: "Delete"
@@ -107,7 +110,7 @@ function viewProspects(){
       onClick={viewBuddies}>See Buddies</Button>
       <Button variant='contained'
       onClick={viewProspects}>Add Buddies</Button>
-    { showBuddies? (<ViewBuddies myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
+    { showBuddies? (<ViewBuddies setBuddyDelete={setBuddyDelete} myBuddies={myBuddies}  onDeleteBuddy={deleteBuddies}/>) : null}
     { seeProspects ? (<AddBuddies potentialBuddies={potentialBuddies} setPotentialBuddies={setPotentialBuddies} updateBuddyList={updateBuddyList} setMyBuddies={setMyBuddies} getBuddies={getBuddies}/> ) : null}
     </Box>
     </div>
