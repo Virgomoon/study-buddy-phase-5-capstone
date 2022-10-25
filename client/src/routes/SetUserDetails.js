@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../context/userDetails'
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
@@ -10,6 +10,7 @@ import '../CSS/home.css'
 export default function SetUserDetails() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [submitted, setSubmitted] = useState(false)
     
     const {  setCurrentUser, currentUser } = useContext(UserContext)
     
@@ -26,19 +27,29 @@ export default function SetUserDetails() {
         body: JSON.stringify({ username, password }),
       })
       // console.log(response.json)
-      const result = await response.json().then((user) => setCurrentUser(user))
-      console.log(currentUser)
-      navigate('/')
-      return result
+      const result = await response.json().then((user) => {
+        console.log(user)
+        setSubmitted((submitted) => !submitted)
+        if (currentUser){
+          navigate('/')
+        }
+      })
+      
+      // return result
     } catch (error){
       console.log(error)
     }
     
     // if (currentUser){
-    //   console.log(currentUser)
-
-    // }
-  }
+      //   console.log(currentUser)
+      
+      // }
+    }
+    
+    useEffect(() => {
+      let response = fetch("/me").then((r) => r.json());
+      setCurrentUser(response)
+  }, [submitted]);
 
     return (
     <div className='sign-in'>
