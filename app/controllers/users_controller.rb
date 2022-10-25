@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    skip_before_action :authorize, only: [:create]
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # skip_before_action :authorize, only: [:create]
 
     def index
         users = @current_user.potential_buddies

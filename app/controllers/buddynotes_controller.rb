@@ -1,6 +1,6 @@
 class BuddynotesController < ApplicationController
 
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def show
         buddy = @current_user.buddies.find(params[:id])

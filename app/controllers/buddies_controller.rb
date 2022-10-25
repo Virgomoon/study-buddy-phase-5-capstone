@@ -1,5 +1,5 @@
 class BuddiesController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
         buddies = Buddy.all.where(user_id: @current_user.id)

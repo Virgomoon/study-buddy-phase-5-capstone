@@ -11,13 +11,13 @@ export default function SetUserDetails() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
     
-    const {  setCurrentUser } = useContext(UserContext)
+    const {  setCurrentUser, currentUser } = useContext(UserContext)
     
     const navigate = useNavigate()
     
     const handleSubmit = async (e) => {
-       try {
       e.preventDefault();
+       try {
       const response = await fetch("/login", {
         method: "POST",
         headers: {
@@ -25,16 +25,19 @@ export default function SetUserDetails() {
         },
         body: JSON.stringify({ username, password }),
       })
-      console.log(response.json)
+      // console.log(response.json)
       const result = await response.json().then((user) => setCurrentUser(user))
-      // console.log(result)
-      // console.log(user)
-
+      console.log(currentUser)
       navigate('/')
       return result
     } catch (error){
       console.log(error)
     }
+    
+    // if (currentUser){
+    //   console.log(currentUser)
+
+    // }
   }
 
     return (
