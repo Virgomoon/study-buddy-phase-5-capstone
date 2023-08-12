@@ -38,7 +38,7 @@ const handleChange = (event, newValue) => {
   return (
     
     <div className='navteam' id='two'>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%' }} style={{ textDecoration: "none" }} >
       <Tabs
         value={value}
         onChange={handleChange}

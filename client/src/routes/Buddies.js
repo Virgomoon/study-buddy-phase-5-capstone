@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
-import Header from '../components/Header';
+import Header from '../components/LoginButton';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ViewBuddies from '../components/ViewBuddies';

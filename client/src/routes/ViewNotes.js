@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import '../App.css';
 import FetchUserDetails from '../components/FetchUserDetails';
 import NoteCard from '../components/NoteCard';
-import Header from '../components/Header';
+import Header from '../components/LoginButton';
 import '../CSS/home.css'
 
 function ViewNotes() {

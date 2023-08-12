@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import { UserProvider } from "./context/userDetails";
 import { SubjectProvider } from "./context/subjectList";
-import Header from "./components/Header";
+import Header from "./components/LoginButton";
 import Buddies from "./routes/Buddies";
 import SetUserDetails from "./routes/SetUserDetails";
 import FetchUserDetails from "./components/FetchUserDetails";
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   { path: "/nav", element: <NavBar />},
   { path: "/header", element: <Header />},
   { path: "/add_subject", element: <AddSubject />},
-  { path: "subject_add", element: <SubjectAdd /> }
+  { path: "/subject_add", element: <SubjectAdd /> }
 ]);
 
 function App() {

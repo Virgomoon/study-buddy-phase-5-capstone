@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
-import Header from '../components/Header';
+import Header from '../components/LoginButton';
 import '../App.css';
 import '../CSS/home.css'
 

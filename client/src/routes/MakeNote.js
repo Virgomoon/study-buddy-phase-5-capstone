@@ -3,7 +3,7 @@ import { UserContext } from '../context/userDetails';
 import { SubjectContext } from '../context/subjectList';
 import NavBar from './NavBar';
 import FetchUserDetails from '../components/FetchUserDetails';
-import Header from '../components/Header';
+import Header from '../components/LoginButton';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';

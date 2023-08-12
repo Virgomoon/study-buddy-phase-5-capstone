@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../context/userDetails';
 import { useNavigate } from "react-router-dom";
-import NavBar from './NavBar';
-import FetchUserDetails from '../components/FetchUserDetails';
-import Header from '../components/Header';
 import BasicCard from '../components/BasicCard';
+import Header from '../components/Header';
+import Main from '../components/Main';
+import SideBar from '../components/SideBar';
 import '../styles.css';
 import '../App.css';
 import '../CSS/home.css'
@@ -17,10 +17,13 @@ function HomePage() {
     const { currentUser } = useContext(UserContext)
 
     const isLoggedin = currentUser.username ? true : false
+    // console.log(isLoggedin)
 
     useEffect(() => {
       
-      if (!isLoggedin) return navigate("/userlogin");
+      if (!isLoggedin) {
+        return navigate("/userlogin");
+      }
     
     }, []);
 
@@ -30,13 +33,12 @@ function HomePage() {
   return (
     <div className='homepage'>
       <div className='head'>
-        <FetchUserDetails />
-        <NavBar />
         <Header />
       </div>
       <div className='main'>
-        <h3>Profile Details</h3>
-        {showCard}
+        <Main />
+        <SideBar />
+        
       </div>
     </div>
   )
