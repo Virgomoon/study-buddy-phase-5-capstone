@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import '../CSS/Main.css'
 
 function Main() {
   return (
-    <div>Main</div>
+    <div className='main_content'>
+        Main
+    </div>
   )
 }
 

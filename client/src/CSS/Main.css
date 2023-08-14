@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    background-color: aquamarine;
+    height: 100%;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    background-color: blueviolet;
+}
+
+

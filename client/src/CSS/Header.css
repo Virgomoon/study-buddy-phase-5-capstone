@@ -1,0 +1,24 @@
+.header {
+    height: auto; 
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    /* align-items: center; */
+    background-color: #0959c2;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px;
+}
+
+.header_title {
+    align-items: center;
+    /* border: 5px solid #0959c2; */
+    /* border-radius: 24px; */
+    margin: 0 15px;
+    width: 100%;
+    color: #0959c2;
+    background-color: white;
+}
+
+

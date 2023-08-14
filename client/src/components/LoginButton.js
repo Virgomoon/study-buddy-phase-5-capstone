@@ -5,6 +5,7 @@ import { UserContext } from '../context/userDetails';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import '../App.css';
+import '../CSS/FetchUserDetails.css'
 
 function LoginButton() {
 

@@ -5,6 +5,7 @@ import BasicCard from '../components/BasicCard';
 import Header from '../components/Header';
 import Main from '../components/Main';
 import SideBar from '../components/SideBar';
+import '../CSS/HomePage.css'
 import '../styles.css';
 import '../App.css';
 import '../CSS/home.css'
@@ -37,8 +38,7 @@ function HomePage() {
       </div>
       <div className='main'>
         <Main />
-        <SideBar />
-        
+        <SideBar /> 
       </div>
     </div>
   )
